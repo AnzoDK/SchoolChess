@@ -1,0 +1,9 @@
+dk/anzodk/skakproject/ChessLobbyController.class
+module-info.class
+dk/anzodk/skakproject/ChessPiece.class
+dk/anzodk/skakproject/ChessController.class
+dk/anzodk/skakproject/PrimaryController.class
+dk/anzodk/skakproject/SecondaryController.class
+dk/anzodk/skakproject/ConnectionManager.class
+dk/anzodk/skakproject/GameController.class
+dk/anzodk/skakproject/App.class

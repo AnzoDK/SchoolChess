@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" fx:id="mainPane" prefHeight="503.0" prefWidth="763.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.anzodk.skakproject.ChessLobbyController">
+   <children>
+      <Label layoutX="263.0" layoutY="14.0" prefHeight="63.0" prefWidth="237.0" text="ChessOnline - The Best Java Chess" />
+      <Button fx:id="hostMatchBtn" layoutX="162.0" layoutY="114.0" mnemonicParsing="false" onAction="#HostMatch" text="Host Match" />
+      <TextField fx:id="IpField" layoutX="408.0" layoutY="114.0" />
+      <Button fx:id="loginBtn" layoutX="586.0" layoutY="114.0" mnemonicParsing="false" onAction="#Login" text="Login to match" />
+      <Label fx:id="waitingLabel" layoutX="122.0" layoutY="149.0" text="Waiting for another player" />
+   </children>
+</AnchorPane>

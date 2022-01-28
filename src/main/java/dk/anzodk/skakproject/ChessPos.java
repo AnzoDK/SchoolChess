@@ -22,6 +22,12 @@ public class ChessPos {
         row = toCopy.row;
         column = toCopy.column;
     }
+    ChessPos(String fromString)
+    {
+        System.out.println("Trying to create ChessPos from String: " + fromString);
+        row = fromString.charAt(0);
+        column = Integer.parseInt(fromString.substring(1,2));
+    }
     String AsString()
     {
         String s = "";

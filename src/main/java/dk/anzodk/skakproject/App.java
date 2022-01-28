@@ -24,6 +24,7 @@ public class App extends Application {
         //ConnectionManager.INSTANCE.socketReadThread.interrupt();
         if(ConnectionManager.INSTANCE != null)
         {
+            ConnectionManager.INSTANCE.Send("CLOSE");
             ConnectionManager.INSTANCE.KillClient();
             ConnectionManager.INSTANCE.KillConnection(); 
         }

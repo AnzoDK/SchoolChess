@@ -41,8 +41,10 @@ public class GameController implements Initializable {
     
     public GraphicsContext gc;
     
-    public double SpaceWidth;
-    public double SpaceHeight;
+    public static AnchorPane GamePane = null;
+    
+    public static double SpaceWidth;
+    public static double SpaceHeight;
     
     /**
      * Initializes the controller class.
@@ -54,8 +56,9 @@ public class GameController implements Initializable {
         double spaceW = (board.getWidth()-1)/8;
         double spaceH = (board.getHeight()-1)/8;
         
-        SpaceWidth = spaceW;
-        SpaceHeight = spaceH;
+        GameController.SpaceWidth = spaceW;
+        GameController.SpaceHeight = spaceH;
+        GameController.GamePane = mainPane;
         
         SetUpChess();
         DrawBoard(spaceW, spaceH);
@@ -123,7 +126,7 @@ public class GameController implements Initializable {
                     //Drawing white pawns
                     Pawn p = new Pawn(new ChessPos((char)((int)'a'+u),2), true, mainPane, SpaceWidth, SpaceHeight);
                     WhitePieces.add(p);
-                    ChessController.INSTANCE.ChessMap.put(new ChessPos(p.currPos), p);
+                    ChessController.INSTANCE.AddPieceToPos(p.currPos, p);
                 }
             }
             else
@@ -134,7 +137,7 @@ public class GameController implements Initializable {
                     //Drawing black pawns
                     Pawn p = new Pawn(new ChessPos((char)((int)'a'+u),7), false, mainPane, SpaceWidth, SpaceHeight);
                     WhitePieces.add(p);
-                    ChessController.INSTANCE.ChessMap.put(new ChessPos(p.currPos), p);
+                    ChessController.INSTANCE.AddPieceToPos(p.currPos, p);
                 }
             }
         }
@@ -142,6 +145,7 @@ public class GameController implements Initializable {
     void SetUpChess()
     {
         ChessController.INSTANCE = new ChessController(ConnectionManager.INSTANCE.isServer);
+        ConnectionManager.INSTANCE.callbackSystem.RegisterListener(new ChessListener());
         
     }
     

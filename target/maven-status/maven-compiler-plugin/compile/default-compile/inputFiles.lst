@@ -6,8 +6,8 @@
 /home/anzo/NetBeansProjects/SkakProject/src/main/java/dk/anzodk/skakproject/NoSuchPieceException.java
 /home/anzo/NetBeansProjects/SkakProject/src/main/java/dk/anzodk/skakproject/ChessPos.java
 /home/anzo/NetBeansProjects/SkakProject/src/main/java/dk/anzodk/skakproject/ChessListener.java
+/home/anzo/NetBeansProjects/SkakProject/src/main/java/dk/anzodk/skakproject/Tower.java
 /home/anzo/NetBeansProjects/SkakProject/src/main/java/dk/anzodk/skakproject/ServerListener.java
-/home/anzo/NetBeansProjects/SkakProject/src/main/java/dk/anzodk/skakproject/AnzoHorribleEvent.java
 /home/anzo/NetBeansProjects/SkakProject/src/main/java/dk/anzodk/skakproject/SecondaryController.java
 /home/anzo/NetBeansProjects/SkakProject/src/main/java/dk/anzodk/skakproject/PrimaryController.java
 /home/anzo/NetBeansProjects/SkakProject/src/main/java/dk/anzodk/skakproject/ChessController.java

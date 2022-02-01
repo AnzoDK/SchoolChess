@@ -27,8 +27,8 @@ public class GameController implements Initializable {
 
     //public ChessController chessController;
     
-    public ArrayList<ChessPiece> WhitePieces = new ArrayList<ChessPiece>();
-    public ArrayList<ChessPiece> BlackPieces = new ArrayList<ChessPiece>();
+    //public ArrayList<ChessPiece> WhitePieces = new ArrayList<ChessPiece>();
+    //public ArrayList<ChessPiece> BlackPieces = new ArrayList<ChessPiece>();
     
     @FXML
     public Canvas board;
@@ -125,9 +125,15 @@ public class GameController implements Initializable {
                 {
                     //Drawing white pawns
                     Pawn p = new Pawn(new ChessPos((char)((int)'a'+u),2), true, mainPane, SpaceWidth, SpaceHeight);
-                    WhitePieces.add(p);
+                    ChessController.INSTANCE.WhitePieces.add(p);
                     ChessController.INSTANCE.AddPieceToPos(p.currPos, p);
                 }
+                Tower tR = new Tower(new ChessPos('h',1),true, mainPane, SpaceWidth, SpaceHeight);
+                Tower tL = new Tower(new ChessPos('a',1),true, mainPane, SpaceWidth, SpaceHeight);
+                ChessController.INSTANCE.WhitePieces.add(tR);
+                ChessController.INSTANCE.AddPieceToPos(tR.currPos, tR);
+                ChessController.INSTANCE.WhitePieces.add(tL);
+                ChessController.INSTANCE.AddPieceToPos(tL.currPos, tL);
             }
             else
             {
@@ -136,9 +142,15 @@ public class GameController implements Initializable {
                 {
                     //Drawing black pawns
                     Pawn p = new Pawn(new ChessPos((char)((int)'a'+u),7), false, mainPane, SpaceWidth, SpaceHeight);
-                    WhitePieces.add(p);
+                    ChessController.INSTANCE.BlackPieces.add(p);
                     ChessController.INSTANCE.AddPieceToPos(p.currPos, p);
                 }
+                Tower tR = new Tower(new ChessPos('h',8),false, mainPane, SpaceWidth, SpaceHeight);
+                Tower tL = new Tower(new ChessPos('a',8),false, mainPane, SpaceWidth, SpaceHeight);
+                ChessController.INSTANCE.WhitePieces.add(tR);
+                ChessController.INSTANCE.AddPieceToPos(tR.currPos, tR);
+                ChessController.INSTANCE.WhitePieces.add(tL);
+                ChessController.INSTANCE.AddPieceToPos(tL.currPos, tL);
             }
         }
     }

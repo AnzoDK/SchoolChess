@@ -16,8 +16,9 @@ public class ChessPiece {
     public boolean isWhite;
     public ChessPos currPos;
     public ImageView pieceImageView = null;
-    private boolean showMoves = false;
+    protected boolean showMoves = false;
     boolean hasMoved = false;
+    public boolean isAlive = true;
     ArrayList<ImageView> currMoves = new ArrayList<ImageView>();
     public ChessPiece(String _name, boolean _isWhite, ChessPos _currPos)
     {
@@ -27,7 +28,7 @@ public class ChessPiece {
         pieceImageView = new ImageView();
         pieceImageView.addEventHandler(MouseEvent.MOUSE_CLICKED, eh -> {
                 //System.out.println("I feel the click ;)");
-                if(ChessController.INSTANCE.yourTurn)
+                if(ChessController.INSTANCE.yourTurn && isWhite == ChessController.INSTANCE.isWhite)
                 {
                     System.out.println("I feel the click ;)");
                     ToggleShowMoves();
@@ -46,9 +47,32 @@ public class ChessPiece {
         return;
     }
     
-    void MoveTo(ChessPos newPos, boolean local)
+    /*void MoveTo(ChessPos newPos, boolean local)
     {
         return;
+    }*/
+    void MoveTo(ChessPos newPos, boolean local)
+    {
+        if(!local)
+        {
+            ConnectionManager.INSTANCE.Send("MOVE " + currPos.AsString() + " TO " + newPos.AsString() + " TYPE " + name);
+        }
+        if(ChessController.INSTANCE.GetPieceOnPos(newPos) != null)
+        {
+            System.out.println(name + " took " + ChessController.INSTANCE.GetPieceOnPos(newPos).name + " on " + newPos.AsString());
+            ChessController.INSTANCE.RemovePieceFromPlay(ChessController.INSTANCE.GetPieceOnPos(newPos));
+        }
+        ChessPos oldPos = new ChessPos(currPos);
+        ChessController.INSTANCE.ClearPieceOnPos(newPos);
+        currPos = new ChessPos(newPos);
+        ChessController.INSTANCE.AddPieceToPos(newPos, this);
+        //Clear old pos
+        ChessController.INSTANCE.ClearPieceOnPos(oldPos);
+        ReDraw();
+        if(!hasMoved)
+        {
+            hasMoved = true;
+        }
     }
     void ReDraw()
     {

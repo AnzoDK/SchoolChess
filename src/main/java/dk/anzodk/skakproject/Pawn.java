@@ -11,7 +11,6 @@ import javafx.scene.layout.AnchorPane;
  * @author anzo
  */
 public class Pawn extends ChessPiece{
-    private boolean showMoves = false;
     public Pawn()
     {
         super("Pawn");
@@ -50,7 +49,7 @@ public class Pawn extends ChessPiece{
                 if(!ChessController.INSTANCE.ContainsKey(new ChessPos(currPos.row,currPos.column+(fieldMod*2))))
                 {
                     ImageView t = new ImageView();
-                    t.setImage(new Image("dk/anzodk/skakproject/pieces/move_tile.png"));
+                    t.setImage(ChessController.INSTANCE.__Move_Image__);
                     t.setFitHeight(GameController.SpaceHeight);
                     t.setFitWidth(GameController.SpaceWidth);
                     t.setLayoutX((44+1) + (((int)currPos.row - ((int)'a')) * GameController.SpaceWidth));
@@ -66,7 +65,7 @@ public class Pawn extends ChessPiece{
             if(!ChessController.INSTANCE.ContainsKey(new ChessPos(currPos.row,currPos.column+fieldMod)))
             {
                     ImageView t = new ImageView();
-                    t.setImage(new Image("dk/anzodk/skakproject/pieces/move_tile.png"));
+                    t.setImage(ChessController.INSTANCE.__Move_Image__);
                     t.setFitHeight(GameController.SpaceHeight);
                     t.setFitWidth(GameController.SpaceWidth);
                     t.setLayoutX((44+1) + (((int)currPos.row - ((int)'a')) * GameController.SpaceWidth));
@@ -80,38 +79,47 @@ public class Pawn extends ChessPiece{
             }
             if(ChessController.INSTANCE.ContainsKey(new ChessPos((char)((int)currPos.row+1),currPos.column+fieldMod)) && currPos.row != 'h')
             {
-                    ImageView t = new ImageView();
-                    t.setImage(new Image("dk/anzodk/skakproject/pieces/move_tile.png"));
-                    t.setFitHeight(GameController.SpaceHeight);
-                    t.setFitWidth(GameController.SpaceWidth);
-                    t.setLayoutX((44+1) + (((int)currPos.row - ((int)'a'+1)) * GameController.SpaceWidth));
-                    t.setLayoutY((38+1) + ((currPos.column+fieldMod-1) * GameController.SpaceHeight));
-                    String id = "";
-                    id += (char)((int)currPos.row+1);
-                    id += currPos.column+fieldMod;
-                    t.setId(id);
-                    GameController.GamePane.getChildren().add(t);
-                    currMoves.add(t);                
+                    //Prevent possible attack on your own pawns
+                    if(ChessController.INSTANCE.GetPieceOnPos(new ChessPos((char)((int)currPos.row+1),currPos.column+fieldMod)).isWhite != ChessController.INSTANCE.isWhite)
+                    {
+                        ImageView t = new ImageView();
+                        t.setImage(ChessController.INSTANCE.__Move_Image__);
+                        t.setFitHeight(GameController.SpaceHeight);
+                        t.setFitWidth(GameController.SpaceWidth);
+                        t.setLayoutX((44+1) + (((int)currPos.row - ((int)'a')+1) * GameController.SpaceWidth));
+                        t.setLayoutY((38+1) + ((currPos.column+fieldMod-1) * GameController.SpaceHeight));
+                        String id = "";
+                        id += (char)((int)currPos.row+1);
+                        id += currPos.column+fieldMod;
+                        t.setId(id);
+                        GameController.GamePane.getChildren().add(t);
+                        currMoves.add(t);
+                    }
             }
             if(ChessController.INSTANCE.ContainsKey(new ChessPos((char)((int)currPos.row-1),currPos.column+fieldMod)) && currPos.row != 'a')
             {
-                    ImageView t = new ImageView();
-                    t.setImage(new Image("dk/anzodk/skakproject/pieces/move_tile.png"));
-                    t.setFitHeight(GameController.SpaceHeight);
-                    t.setFitWidth(GameController.SpaceWidth);
-                    t.setLayoutX((44+1) + (((int)currPos.row - ((int)'a'-1)) * GameController.SpaceWidth));
-                    t.setLayoutY((38+1) + ((currPos.column+fieldMod-1) * GameController.SpaceHeight));
-                    String id = "";
-                    id += (char)((int)currPos.row-1);
-                    id += currPos.column+fieldMod;
-                    t.setId(id);
-                    GameController.GamePane.getChildren().add(t);
-                    currMoves.add(t);                
+                    //Prevent possible attack on your own pawns
+                    if(ChessController.INSTANCE.GetPieceOnPos(new ChessPos((char)((int)currPos.row-1),currPos.column+fieldMod)).isWhite != ChessController.INSTANCE.isWhite)
+                    {
+                        ImageView t = new ImageView();
+                        t.setImage(ChessController.INSTANCE.__Move_Image__);
+                        t.setFitHeight(GameController.SpaceHeight);
+                        t.setFitWidth(GameController.SpaceWidth);
+                        //t.setLayoutX((44+1) + (((int)currPos.row - ((int)'a'-1)) * GameController.SpaceWidth));
+                        t.setLayoutX((44+1) + (((int)currPos.row - ((int)'a')-1) * GameController.SpaceWidth));
+                        t.setLayoutY((38+1) + ((currPos.column+fieldMod-1) * GameController.SpaceHeight));
+                        String id = "";
+                        id += (char)((int)currPos.row-1);
+                        id += currPos.column+fieldMod;
+                        t.setId(id);
+                        GameController.GamePane.getChildren().add(t);
+                        currMoves.add(t);            
+                    }
             }
             for(int i = 0; i < currMoves.size(); i++)
             {
                 ImageView v = currMoves.get(i);
-                v.addEventHandler(MouseEvent.MOUSE_CLICKED, eh ->{
+                v.addEventHandler(MouseEvent.MOUSE_CLICKED, eh ->{   
                     MoveTo(new ChessPos(v.getId()),false);
                     ToggleShowMoves();
                     ChessController.INSTANCE.yourTurn = false;
@@ -120,22 +128,6 @@ public class Pawn extends ChessPiece{
         }
     }
     
-    @Override
-    void MoveTo(ChessPos newPos, boolean local)
-    {
-        if(!local)
-        {
-            ConnectionManager.INSTANCE.Send("MOVE " + currPos.AsString() + " TO " + newPos.AsString() + " TYPE " + name);
-        }
-        ChessController.INSTANCE.ClearPieceOnPos(newPos);
-        currPos = new ChessPos(newPos);
-        ChessController.INSTANCE.AddPieceToPos(newPos, this);
-        ReDraw();
-        if(!hasMoved)
-        {
-            hasMoved = true;
-        }
-    }
     
     @Override
     public boolean ValidateMove(ChessPos from, ChessPos to, int moveCount, boolean isWhite)

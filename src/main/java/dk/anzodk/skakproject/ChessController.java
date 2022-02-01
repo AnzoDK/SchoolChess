@@ -5,6 +5,7 @@
 package dk.anzodk.skakproject;
 import java.util.ArrayList;
 import java.util.HashMap;
+import javafx.scene.image.Image;
 /**
  *
  * @author anzo
@@ -17,6 +18,9 @@ public class ChessController {
     
     
     public static ChessController INSTANCE;
+    public Image __Move_Image__;
+    public ArrayList<ChessPiece> WhitePieces = new ArrayList<ChessPiece>();
+    public ArrayList<ChessPiece> BlackPieces = new ArrayList<ChessPiece>();
     public ArrayList<String> moveList = new ArrayList<String>();
     public HashMap<ChessPos, ChessPiece> ChessMap = new HashMap<ChessPos,ChessPiece>();
     public HashMap<String, ChessPos> ChessStringMap = new HashMap<String,ChessPos>();
@@ -24,10 +28,14 @@ public class ChessController {
     
     ChessController(boolean _isHost)
     {
+        __Move_Image__ = new Image("dk/anzodk/skakproject/pieces/move_tile.png");
         isHost = _isHost;
+        App._stage.setTitle("You Are Playing as BLACK");
         if(_isHost)
         {
             yourTurn = true;
+            isWhite = true;
+            App._stage.setTitle("You Are playing as WHITE");
         }
         for(int i = 0; i < 8; i++)
         {
@@ -45,7 +53,12 @@ public class ChessController {
     }
     public boolean ContainsKey(ChessPos pos)
     {
-        return ( ChessMap.get(ChessStringMap.get(pos.AsString())) != null );
+        System.out.println("Searching for Piece on pos: " + pos.AsString());
+        boolean result = ( ChessMap.get(ChessStringMap.get(pos.AsString())) != null );
+        
+        System.out.println( (result ? "Found piece on pos: " + pos.AsString() : "Didn't find any piece on pos: " + pos.AsString()));
+        
+        return result;
     }
     
     public void AddPieceToPos(ChessPos pos, ChessPiece piece)
@@ -63,6 +76,20 @@ public class ChessController {
         ChessMap.replace( ChessStringMap.get(pos.AsString()), null );
     }
     
+    public void RemovePieceFromPlay(ChessPiece p)
+    {
+        //GameController.GamePane.getChildren().remove(p.pieceImageView); //Wrong thread.....
+        p.pieceImageView.setLayoutX(999999999); // just move the piece out the fucking way, cuz threading issue
+        p.isAlive = false;
+        if(p.isWhite)
+        {
+            WhitePieces.remove(p);
+        }
+        else
+        {
+            BlackPieces.remove(p);
+        }
+    }
     
     boolean ValidateMove(String pieceName, ChessPos from, ChessPos to)
     {

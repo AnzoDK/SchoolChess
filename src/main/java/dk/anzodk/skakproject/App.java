@@ -15,10 +15,12 @@ import javafx.stage.WindowEvent;
 public class App extends Application {
 
     private static Scene scene;
+    public static Stage _stage;
 
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("primary"), 640, 480);
+        App._stage = stage;
         stage.setScene(scene);
         stage.addEventFilter(WindowEvent.WINDOW_CLOSE_REQUEST, eh -> {
         //ConnectionManager.INSTANCE.socketReadThread.interrupt();

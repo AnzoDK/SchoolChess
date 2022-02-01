@@ -51,7 +51,7 @@ public class Tower extends ChessPiece{
             while(!(ChessController.INSTANCE.ContainsKey(new ChessPos((char)((int)currPos.row+c),currPos.column))) && ((int)currPos.row+c) < 'h'+1)
             {
                 ImageView t = new ImageView();
-                t.setImage(new Image("dk/anzodk/skakproject/pieces/move_tile.png"));
+                t.setImage(ChessController.INSTANCE.__Move_Image__);
                 t.setFitHeight(GameController.SpaceHeight);
                 t.setFitWidth(GameController.SpaceWidth);
                 t.setLayoutX((44+1) + (((int)currPos.row - ((int)'a')+c) * GameController.SpaceWidth));
@@ -69,7 +69,7 @@ public class Tower extends ChessPiece{
                 if(ChessController.INSTANCE.GetPieceOnPos(new ChessPos((char)((int)currPos.row+c),currPos.column)).isWhite != isWhite)
                 {
                     ImageView t = new ImageView();
-                    t.setImage(new Image("dk/anzodk/skakproject/pieces/move_tile.png"));
+                    t.setImage(ChessController.INSTANCE.__Move_Image__);
                     t.setFitHeight(GameController.SpaceHeight);
                     t.setFitWidth(GameController.SpaceWidth);
                     t.setLayoutX((44+1) + (((int)currPos.row - ((int)'a')+c) * GameController.SpaceWidth));
@@ -87,7 +87,7 @@ public class Tower extends ChessPiece{
             while(!(ChessController.INSTANCE.ContainsKey(new ChessPos((char)((int)currPos.row-c),currPos.column))) && ((int)currPos.row-c) > (int)'a'-1)
             {
                 ImageView t = new ImageView();
-                t.setImage(new Image("dk/anzodk/skakproject/pieces/move_tile.png"));
+                t.setImage(ChessController.INSTANCE.__Move_Image__);
                 t.setFitHeight(GameController.SpaceHeight);
                 t.setFitWidth(GameController.SpaceWidth);
                 t.setLayoutX((44+1) + (((int)currPos.row - ((int)'a')-c) * GameController.SpaceWidth));

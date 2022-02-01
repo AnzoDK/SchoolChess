@@ -33,7 +33,7 @@ public class Tower extends ChessPiece{
         pieceImageView.setFitWidth(w);
         pieceImageView.setLayoutX((44+1) + (((int)currPos.row - ((int)'a')) * w));
         pieceImageView.setLayoutY((38+1) + ((currPos.column-1) * h));
-        System.out.println("Placing Pawn at: X: " +  pieceImageView.getLayoutX() + " Y: " + pieceImageView.getLayoutY() +  " Colum: " + currPos.AsString());
+        System.out.println("Placing Tower at: X: " +  pieceImageView.getLayoutX() + " Y: " + pieceImageView.getLayoutY() +  " Colum: " + currPos.AsString());
         gameBoard.getChildren().add(pieceImageView);
     }
     

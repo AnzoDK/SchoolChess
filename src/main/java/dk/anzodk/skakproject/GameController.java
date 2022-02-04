@@ -90,8 +90,7 @@ public class GameController implements Initializable {
         {
             gc.moveTo(w*i, 0);
             gc.lineTo(w*i, board.getHeight());
-            gc.stroke();
-            
+            gc.stroke();  
         }
         for(int i = 0; i < 9; i++)
         {
@@ -128,11 +127,17 @@ public class GameController implements Initializable {
                     ChessController.INSTANCE.WhitePieces.add(p);
                     ChessController.INSTANCE.AddPieceToPos(p.currPos, p);
                 }
+                Bishop bR = new Bishop(new ChessPos('f',1),true, mainPane, SpaceWidth, SpaceHeight);
+                Bishop bL = new Bishop(new ChessPos('c',1),true, mainPane, SpaceWidth, SpaceHeight);
                 Tower tR = new Tower(new ChessPos('h',1),true, mainPane, SpaceWidth, SpaceHeight);
                 Tower tL = new Tower(new ChessPos('a',1),true, mainPane, SpaceWidth, SpaceHeight);
+                ChessController.INSTANCE.WhitePieces.add(bR);
+                ChessController.INSTANCE.WhitePieces.add(bL);
+                ChessController.INSTANCE.AddPieceToPos(bR.currPos, bR);
+                ChessController.INSTANCE.AddPieceToPos(bL.currPos, bL);
                 ChessController.INSTANCE.WhitePieces.add(tR);
-                ChessController.INSTANCE.AddPieceToPos(tR.currPos, tR);
                 ChessController.INSTANCE.WhitePieces.add(tL);
+                ChessController.INSTANCE.AddPieceToPos(tR.currPos, tR);
                 ChessController.INSTANCE.AddPieceToPos(tL.currPos, tL);
             }
             else
@@ -145,11 +150,17 @@ public class GameController implements Initializable {
                     ChessController.INSTANCE.BlackPieces.add(p);
                     ChessController.INSTANCE.AddPieceToPos(p.currPos, p);
                 }
+                Bishop bR = new Bishop(new ChessPos('f',8),false, mainPane, SpaceWidth, SpaceHeight);
+                Bishop bL = new Bishop(new ChessPos('c',8),false, mainPane, SpaceWidth, SpaceHeight);
                 Tower tR = new Tower(new ChessPos('h',8),false, mainPane, SpaceWidth, SpaceHeight);
                 Tower tL = new Tower(new ChessPos('a',8),false, mainPane, SpaceWidth, SpaceHeight);
-                ChessController.INSTANCE.WhitePieces.add(tR);
+                ChessController.INSTANCE.BlackPieces.add(bR);
+                ChessController.INSTANCE.BlackPieces.add(bL);
+                ChessController.INSTANCE.AddPieceToPos(bR.currPos, bR);
+                ChessController.INSTANCE.AddPieceToPos(bL.currPos, bL);
+                ChessController.INSTANCE.BlackPieces.add(tR);               
+                ChessController.INSTANCE.BlackPieces.add(tL);
                 ChessController.INSTANCE.AddPieceToPos(tR.currPos, tR);
-                ChessController.INSTANCE.WhitePieces.add(tL);
                 ChessController.INSTANCE.AddPieceToPos(tL.currPos, tL);
             }
         }

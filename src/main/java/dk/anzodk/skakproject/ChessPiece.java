@@ -31,7 +31,7 @@ public class ChessPiece {
                 if(ChessController.INSTANCE.yourTurn && isWhite == ChessController.INSTANCE.isWhite)
                 {
                     System.out.println("I feel the click ;)");
-                    if(ChessController.INSTANCE.selectedPiece != null)
+                    if(ChessController.INSTANCE.selectedPiece != null && ChessController.INSTANCE.selectedPiece != this)
                     {
                         if(ChessController.INSTANCE.selectedPiece.showMoves)
                         {

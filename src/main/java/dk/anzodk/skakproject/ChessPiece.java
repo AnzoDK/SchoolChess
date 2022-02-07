@@ -15,6 +15,7 @@ public class ChessPiece {
     public String name;
     public boolean isWhite;
     public ChessPos currPos;
+    
     public ImageView pieceImageView = null;
     public boolean showMoves = false;
     boolean hasMoved = false;

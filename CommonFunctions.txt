@@ -1,0 +1,41 @@
+CI = ChessController.INSTACE;
+
+boolean CI.ContiansKey(ChessPos) {
+
+Checks if there exists a piece on the given location
+
+}
+
+ChessPiece CI.GetPieceOnPos(ChessPos){
+
+Returns the piece located on the chesspos or returns null if there is nothing
+
+}
+
+//Check if friendly
+if(CI.isWhite == CI.GetPieceOnPos(ChessPos).isWhite)
+{
+	//We are friendly with the piece on the position ChessPos
+}
+
+//Check if enemy
+if(CI.isWhite != CI.GetPieceOnPos(ChessPos).isWhite)
+{
+	//We are NOT friendly with the piece on the position ChessPos
+}
+
+//MoveView
+
+                    ImageView t = new ImageView();
+                    t.setImage(ChessController.INSTANCE.__Move_Image__);
+                    t.setFitHeight(GameController.SpaceHeight);
+                    t.setFitWidth(GameController.SpaceWidth);
+                    t.setLayoutX((44+1) + (((int)currPos.row - ((int)'a')) * GameController.SpaceWidth));
+                    t.setLayoutY((38+1) + ((currPos.column+(fieldMod*2)-1) * GameController.SpaceHeight));
+                    String id = "";
+                    id += currPos.row;
+                    id += currPos.column+(fieldMod*2);
+                    t.setId(id);
+                    GameController.GamePane.getChildren().add(t);
+                    currMoves.add(t);
+

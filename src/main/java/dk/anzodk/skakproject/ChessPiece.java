@@ -16,7 +16,7 @@ public class ChessPiece {
     public boolean isWhite;
     public ChessPos currPos;
     public ImageView pieceImageView = null;
-    protected boolean showMoves = false;
+    public boolean showMoves = false;
     boolean hasMoved = false;
     public boolean isAlive = true;
     ArrayList<ImageView> currMoves = new ArrayList<ImageView>();
@@ -31,6 +31,14 @@ public class ChessPiece {
                 if(ChessController.INSTANCE.yourTurn && isWhite == ChessController.INSTANCE.isWhite)
                 {
                     System.out.println("I feel the click ;)");
+                    if(ChessController.INSTANCE.selectedPiece != null)
+                    {
+                        if(ChessController.INSTANCE.selectedPiece.showMoves)
+                        {
+                            ChessController.INSTANCE.selectedPiece.ToggleShowMoves();
+                        }
+                    }
+                    ChessController.INSTANCE.selectedPiece = this;
                     ToggleShowMoves();
                 }
         

@@ -15,6 +15,7 @@ public class ChessController {
     boolean isHost;
     public int moveCount = 0;
     public boolean yourTurn = false;
+    public ChessPiece selectedPiece = null;
     
     
     public static ChessController INSTANCE;

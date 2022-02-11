@@ -48,6 +48,8 @@ public class Queen extends ChessPiece{
         {
             int fieldMod = (isWhite ? 1 : -1);
             int c = 1;
+            
+            // TOWER CODE
             //Move in X positive
             while(!(ChessController.INSTANCE.ContainsKey(new ChessPos((char)((int)currPos.row+c),currPos.column))) && ((int)currPos.row+c) < 'h'+1)
             {
@@ -193,6 +195,10 @@ public class Queen extends ChessPiece{
                     currMoves.add(t);
                 }
             }
+            
+            /// BISHOP CODE
+            
+             //X++
             while(!(ChessController.INSTANCE.ContainsKey(new ChessPos((char)((int)currPos.row+c),currPos.column+(c*fieldMod)))) && (int)currPos.row+c >= (int)'a' && (int)currPos.row+c <= (int)'h' && currPos.column+(c*fieldMod) > 0 && currPos.column+(c*fieldMod) < 9)
             {
                 ImageView t = new ImageView();
@@ -211,7 +217,7 @@ public class Queen extends ChessPiece{
             }
             //X--
             c = 1;
-            while(!(ChessController.INSTANCE.ContainsKey(new ChessPos((char)((int)currPos.row-c),currPos.column+(c*fieldMod)))) && (int)currPos.row-c <= (int)'h' && (int)currPos.row-c >= (int)'a' && (int)currPos.column+(c*fieldMod) > 0 && (int)currPos.column+(c*fieldMod) < 9)
+            while(!(ChessController.INSTANCE.ContainsKey(new ChessPos((char)((int)currPos.row-c),currPos.column+(c*fieldMod)))) && (int)currPos.row-c <= (int)'h' && (int)currPos.row-c >= (int)'a' && currPos.column+(c*fieldMod) > 0 && currPos.column+(c*fieldMod) < 9)
             {
                 ImageView t = new ImageView();
                 t.setImage(ChessController.INSTANCE.__Move_Image__);
@@ -229,7 +235,7 @@ public class Queen extends ChessPiece{
             }
             //Y--
             c = 1;
-            while(!(ChessController.INSTANCE.ContainsKey(new ChessPos((char)((int)currPos.row-c),currPos.column-(c*fieldMod)))) && (int)currPos.column-(c*fieldMod) > 0 && (int)currPos.column-(c*fieldMod) < 9)
+            while(!(ChessController.INSTANCE.ContainsKey(new ChessPos((char)((int)currPos.row-c),currPos.column-(c*fieldMod)))) && (int)currPos.row-c <= (int)'h' && (int)currPos.row-c >= (int)'a' && (int)currPos.column-(c*fieldMod) > 0 && (int)currPos.column-(c*fieldMod) < 9)
             {
                 ImageView t = new ImageView();
                 t.setImage(ChessController.INSTANCE.__Move_Image__);
@@ -247,7 +253,7 @@ public class Queen extends ChessPiece{
             }
             //Y++
             c = 1;
-            while(!(ChessController.INSTANCE.ContainsKey(new ChessPos((char)((int)currPos.row+c),currPos.column-(c*fieldMod)))) && (int)currPos.column-c > 0 && (int)currPos.column-(c*fieldMod) <= 8 && (int)currPos.row-(c*fieldMod) <= (int)'h')
+            while(!(ChessController.INSTANCE.ContainsKey(new ChessPos((char)((int)currPos.row+c),currPos.column-(c*fieldMod)))) && (int)currPos.column-(c*fieldMod) > 0 && (int)currPos.column-(c*fieldMod) < 9 && (int)currPos.row+c >= (int)'a' && (int)currPos.row+c <= (int)'h')
             {
                 ImageView t = new ImageView();
                 t.setImage(ChessController.INSTANCE.__Move_Image__);
@@ -263,6 +269,7 @@ public class Queen extends ChessPiece{
                 currMoves.add(t);
                 c++;
             }
+            
     for(int i = 0; i < currMoves.size(); i++)
             {
                 ImageView v = currMoves.get(i);

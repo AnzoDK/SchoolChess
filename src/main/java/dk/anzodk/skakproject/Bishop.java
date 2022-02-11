@@ -66,7 +66,7 @@ public class Bishop extends ChessPiece{
             }
             //X--
             c = 1;
-            while(!(ChessController.INSTANCE.ContainsKey(new ChessPos((char)((int)currPos.row-c),currPos.column+(c*fieldMod)))) && (int)currPos.row-c <= (int)'h' && (int)currPos.row-c >= (int)'a' && (int)currPos.column+(c*fieldMod) > 0 && (int)currPos.column+(c*fieldMod) < 9)
+            while(!(ChessController.INSTANCE.ContainsKey(new ChessPos((char)((int)currPos.row-c),currPos.column+(c*fieldMod)))) && (int)currPos.row-c <= (int)'h' && (int)currPos.row-c >= (int)'a' && currPos.column+(c*fieldMod) > 0 && currPos.column+(c*fieldMod) < 9)
             {
                 ImageView t = new ImageView();
                 t.setImage(ChessController.INSTANCE.__Move_Image__);
@@ -84,7 +84,7 @@ public class Bishop extends ChessPiece{
             }
             //Y--
             c = 1;
-            while(!(ChessController.INSTANCE.ContainsKey(new ChessPos((char)((int)currPos.row-c),currPos.column-(c*fieldMod)))) && (int)currPos.column-(c*fieldMod) > 0 && (int)currPos.column-(c*fieldMod) < 9)
+            while(!(ChessController.INSTANCE.ContainsKey(new ChessPos((char)((int)currPos.row-c),currPos.column-(c*fieldMod)))) && (int)currPos.row-c <= (int)'h' && (int)currPos.row-c >= (int)'a' && (int)currPos.column-(c*fieldMod) > 0 && (int)currPos.column-(c*fieldMod) < 9)
             {
                 ImageView t = new ImageView();
                 t.setImage(ChessController.INSTANCE.__Move_Image__);
@@ -102,7 +102,7 @@ public class Bishop extends ChessPiece{
             }
             //Y++
             c = 1;
-            while(!(ChessController.INSTANCE.ContainsKey(new ChessPos((char)((int)currPos.row+c),currPos.column-(c*fieldMod)))) && (int)currPos.column-c > 0 && (int)currPos.column-(c*fieldMod) <= 8 && (int)currPos.row-(c*fieldMod) <= (int)'h')
+            while(!(ChessController.INSTANCE.ContainsKey(new ChessPos((char)((int)currPos.row+c),currPos.column-(c*fieldMod)))) && (int)currPos.column-(c*fieldMod) > 0 && (int)currPos.column-(c*fieldMod) < 9 && (int)currPos.row+c >= (int)'a' && (int)currPos.row+c <= (int)'h')
             {
                 ImageView t = new ImageView();
                 t.setImage(ChessController.INSTANCE.__Move_Image__);

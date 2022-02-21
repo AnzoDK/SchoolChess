@@ -19,8 +19,8 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"), 823, 556);
-        //scene = new Scene(loadFXML("primary"));
+        //scene = new Scene(loadFXML("primary"), 823, 556);
+        scene = new Scene(loadFXML("primary"));
         App._stage = stage;
         stage.setScene(scene);
         stage.addEventFilter(WindowEvent.WINDOW_CLOSE_REQUEST, eh -> {
@@ -38,6 +38,7 @@ public class App extends Application {
 
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
+        _stage.sizeToScene();
         
     }
 

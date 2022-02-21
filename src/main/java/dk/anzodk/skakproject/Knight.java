@@ -27,11 +27,11 @@ public class Knight extends ChessPiece {
         super("Horse", isWhite, startPos);
         if(isWhite)
         {
-            pieceImageView.setImage(new Image("dk/anzodk/skakproject/pieces/white_horse.png"));
+            pieceImageView.setImage(new Image("dk/anzodk/skakproject/pieces/white_knight.png"));
         }
         else
         {
-            pieceImageView.setImage(new Image("dk/anzodk/skakproject/pieces/black_horse.png"));
+            pieceImageView.setImage(new Image("dk/anzodk/skakproject/pieces/black_knight.png"));
         }
         pieceImageView.setFitHeight(h);
         pieceImageView.setFitWidth(w);

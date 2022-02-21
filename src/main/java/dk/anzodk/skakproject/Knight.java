@@ -19,12 +19,12 @@ public class Knight extends ChessPiece {
     
     public Knight()
     {
-        super("Horse");
+        super("Knight");
         
     }
     public Knight(ChessPos startPos, boolean isWhite, AnchorPane gameBoard, double w, double h)
     {
-        super("Horse", isWhite, startPos);
+        super("Knight", isWhite, startPos);
         if(isWhite)
         {
             pieceImageView.setImage(new Image("dk/anzodk/skakproject/pieces/white_knight.png"));

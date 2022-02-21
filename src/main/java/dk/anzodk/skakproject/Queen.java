@@ -24,11 +24,11 @@ public class Queen extends ChessPiece{
         super("Queen", isWhite, startPos);
         if(isWhite)
         {
-            pieceImageView.setImage(new Image("dk/anzodk/skakproject/pieces/white_Queen.png"));
+            pieceImageView.setImage(new Image("dk/anzodk/skakproject/pieces/white_queen.png"));
         }
         else
         {
-            pieceImageView.setImage(new Image("dk/anzodk/skakproject/pieces/black_Queen.png"));
+            pieceImageView.setImage(new Image("dk/anzodk/skakproject/pieces/black_queen.png"));
         }
         pieceImageView.setFitHeight(h);
         pieceImageView.setFitWidth(w);

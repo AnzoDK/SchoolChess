@@ -72,7 +72,7 @@ public class King extends ChessPiece{
                         continue;
                     }
                     ChessPos tmp = new ChessPos((char)((int)currPos.row+x),currPos.column+y);
-                    if((!ChessController.INSTANCE.ContainsKey(new ChessPos(tmp.row,tmp.column)) && tmp.column > 0 && tmp.column < 9 && (int)tmp.row >= (int)'a' && (int)tmp.row <= (int)'h') || ((( (ChessController.INSTANCE.GetPieceOnPos(tmp) == null ? !ChessController.INSTANCE.isWhite : ChessController.INSTANCE.GetPieceOnPos(tmp).isWhite) != ChessController.INSTANCE.isWhite) && tmp.column > 0 && tmp.column < 9 && (int)tmp.row >= (int)'a' && (int)tmp.row <= (int)'h')) )
+                    if((!ChessController.INSTANCE.ContainsKey(new ChessPos(tmp.row,tmp.column)) && tmp.column > 0 && tmp.column < 9 && (int)tmp.row >= (int)'a' && (int)tmp.row <= (int)'h') || ((( (ChessController.INSTANCE.GetPieceOnPos(tmp) == null ? ChessController.INSTANCE.isWhite : ChessController.INSTANCE.GetPieceOnPos(tmp).isWhite) != ChessController.INSTANCE.isWhite) && tmp.column > 0 && tmp.column < 9 && (int)tmp.row >= (int)'a' && (int)tmp.row <= (int)'h')) )
                     {
                         CreateMoveFor(tmp);
                     }
@@ -136,22 +136,6 @@ public class King extends ChessPiece{
         }
         return false;
 
-    }
-    
-    void CreateMoveFor(ChessPos pos)
-    {
-        ImageView t = new ImageView();
-        t.setImage(ChessController.INSTANCE.__Move_Image__);
-        t.setFitHeight(GameController.SpaceHeight);
-        t.setFitWidth(GameController.SpaceWidth);
-        t.setLayoutX((44+1) + (((int)pos.row - ((int)'a')) * GameController.SpaceWidth));
-        t.setLayoutY((38+1) + ((pos.column-1) * GameController.SpaceHeight));
-        String id = "";
-        id += pos.row;
-        id += pos.column;
-        t.setId(id);
-        GameController.GamePane.getChildren().add(t);
-        currMoves.add(t);        
     }
     
 }

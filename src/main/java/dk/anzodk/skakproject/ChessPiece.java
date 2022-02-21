@@ -95,4 +95,19 @@ public class ChessPiece {
     {
         return false;
     }
+    public void CreateMoveFor(ChessPos pos)
+    {
+        ImageView t = new ImageView();
+        t.setImage(ChessController.INSTANCE.__Move_Image__);
+        t.setFitHeight(GameController.SpaceHeight);
+        t.setFitWidth(GameController.SpaceWidth);
+        t.setLayoutX((44+1) + (((int)pos.row - ((int)'a')) * GameController.SpaceWidth));
+        t.setLayoutY((38+1) + ((pos.column-1) * GameController.SpaceHeight));
+        String id = "";
+        id += pos.row;
+        id += pos.column;
+        t.setId(id);
+        GameController.GamePane.getChildren().add(t);
+        currMoves.add(t);        
+    }
 }

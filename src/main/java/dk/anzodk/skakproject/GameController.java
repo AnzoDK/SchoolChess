@@ -131,9 +131,11 @@ public class GameController implements Initializable {
                 Bishop bL = new Bishop(new ChessPos('c',1),true, mainPane, SpaceWidth, SpaceHeight);
                 Tower tR = new Tower(new ChessPos('h',1),true, mainPane, SpaceWidth, SpaceHeight);
                 Tower tL = new Tower(new ChessPos('a',1),true, mainPane, SpaceWidth, SpaceHeight);
-                horse hL = new horse(new ChessPos('b',1),true, mainPane, SpaceWidth, SpaceHeight);
-                horse hR = new horse(new ChessPos('g',1),true, mainPane, SpaceWidth, SpaceHeight);
-                 Queen q = new Queen(new ChessPos('d',1),true, mainPane, SpaceWidth, SpaceHeight);
+                Knight kL = new Knight(new ChessPos('b',1),true, mainPane, SpaceWidth, SpaceHeight);
+                Knight kR = new Knight(new ChessPos('g',1),true, mainPane, SpaceWidth, SpaceHeight);
+                Queen q = new Queen(new ChessPos('d',1),true, mainPane, SpaceWidth, SpaceHeight);
+                King k = new King(new ChessPos('e',1),true,mainPane,SpaceWidth,SpaceHeight);
+                
                 
                 ChessController.INSTANCE.WhitePieces.add(bR);
                 ChessController.INSTANCE.WhitePieces.add(bL);
@@ -143,12 +145,14 @@ public class GameController implements Initializable {
                 ChessController.INSTANCE.WhitePieces.add(tL);
                 ChessController.INSTANCE.AddPieceToPos(tR.currPos, tR);
                 ChessController.INSTANCE.AddPieceToPos(tL.currPos, tL);
-                ChessController.INSTANCE.WhitePieces.add(hR);
-                ChessController.INSTANCE.WhitePieces.add(hL);
-                ChessController.INSTANCE.AddPieceToPos(hR.currPos, hR);
-                ChessController.INSTANCE.AddPieceToPos(hL.currPos, hL);
+                ChessController.INSTANCE.WhitePieces.add(kR);
+                ChessController.INSTANCE.WhitePieces.add(kL);
+                ChessController.INSTANCE.AddPieceToPos(kR.currPos, kR);
+                ChessController.INSTANCE.AddPieceToPos(kL.currPos, kL);
                 ChessController.INSTANCE.WhitePieces.add(q);
-                 ChessController.INSTANCE.AddPieceToPos(q.currPos, q);
+                ChessController.INSTANCE.AddPieceToPos(q.currPos, q);
+                ChessController.INSTANCE.WhitePieces.add(k);
+                ChessController.INSTANCE.AddPieceToPos(k.currPos, k);                
             }
             else
             {
@@ -164,10 +168,12 @@ public class GameController implements Initializable {
                 Bishop bL = new Bishop(new ChessPos('c',8),false, mainPane, SpaceWidth, SpaceHeight);
                 Tower tR = new Tower(new ChessPos('h',8),false, mainPane, SpaceWidth, SpaceHeight);
                 Tower tL = new Tower(new ChessPos('a',8),false, mainPane, SpaceWidth, SpaceHeight);
-                 horse hL = new horse(new ChessPos('b',8),false, mainPane, SpaceWidth, SpaceHeight);
-                horse hR = new horse(new ChessPos('g',8),false, mainPane, SpaceWidth, SpaceHeight);
-                  Queen q = new Queen(new ChessPos('d',8),false, mainPane, SpaceWidth, SpaceHeight);
-               
+                Knight kL = new Knight(new ChessPos('b',8),false, mainPane, SpaceWidth, SpaceHeight);
+                Knight kR = new Knight(new ChessPos('g',8),false, mainPane, SpaceWidth, SpaceHeight);
+                Queen q = new Queen(new ChessPos('d',8),false, mainPane, SpaceWidth, SpaceHeight);
+                King k = new King(new ChessPos('e',8),false,mainPane,SpaceWidth,SpaceHeight);
+                
+                
                 ChessController.INSTANCE.BlackPieces.add(bR);
                 ChessController.INSTANCE.BlackPieces.add(bL);
                 ChessController.INSTANCE.AddPieceToPos(bR.currPos, bR);
@@ -176,13 +182,14 @@ public class GameController implements Initializable {
                 ChessController.INSTANCE.BlackPieces.add(tL);
                 ChessController.INSTANCE.AddPieceToPos(tR.currPos, tR);
                 ChessController.INSTANCE.AddPieceToPos(tL.currPos, tL);
-                ChessController.INSTANCE.BlackPieces.add(hR);               
-                ChessController.INSTANCE.BlackPieces.add(hL);
-                ChessController.INSTANCE.AddPieceToPos(hR.currPos, hR);
-                ChessController.INSTANCE.AddPieceToPos(hL.currPos, hL);
-                 ChessController.INSTANCE.BlackPieces.add(q);               
-                
+                ChessController.INSTANCE.BlackPieces.add(kR);               
+                ChessController.INSTANCE.BlackPieces.add(kL);
+                ChessController.INSTANCE.AddPieceToPos(kR.currPos, kR);
+                ChessController.INSTANCE.AddPieceToPos(kL.currPos, kL);
+                ChessController.INSTANCE.BlackPieces.add(q);                
                 ChessController.INSTANCE.AddPieceToPos(q.currPos, q);
+                ChessController.INSTANCE.BlackPieces.add(k);                
+                ChessController.INSTANCE.AddPieceToPos(k.currPos, k);
                 
             }
         }

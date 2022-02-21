@@ -13,16 +13,16 @@ import javafx.scene.layout.AnchorPane;
  *
  * @author gabriel
  */
-public class horse extends ChessPiece {
+public class Knight extends ChessPiece {
     
      private ChessPos TargetPos; 
     
-    public horse()
+    public Knight()
     {
         super("Horse");
         
     }
-    public horse(ChessPos startPos, boolean isWhite, AnchorPane gameBoard, double w, double h)
+    public Knight(ChessPos startPos, boolean isWhite, AnchorPane gameBoard, double w, double h)
     {
         super("Horse", isWhite, startPos);
         if(isWhite)

@@ -48,6 +48,21 @@ public class King extends ChessPiece{
         {
             int fieldMod = (isWhite ? 1 : -1);
             
+            /*
+            
+            Thought Pattern
+            
+            	-1,1	0,1	1,1	
+		
+                -1,0	0,0	1,0
+	
+                -1,-1	0,-1	1,-1
+            
+            Where the king is 0,0
+            
+            
+            */
+            
             for(int x = -1; x < 2; x++)
             {
                 for(int y = 1; y >= 0; y--)

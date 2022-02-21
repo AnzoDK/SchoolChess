@@ -68,14 +68,15 @@ public class ChessLobbyController implements Initializable{
     @FXML
     void HostMatch()
     {
-        //Open Socket on port CHESS (33233)
+        //Open Socket on port CHESS (33233) /*Online works - Checked with Stefan!*/
         try{
             waitingLabel.setVisible(true);
             ServerSocket s = new ServerSocket(chessPort);
-            //Alert a = DisplayAsyncError("Searching for player.","Player search will start - Please press 'OK'",Alert.AlertType.INFORMATION);
-            //a.showAndWait();
-            //Switch to waiting
             ConnectionManager.INSTANCE = new ConnectionManager(s);
+            Alert a = DisplayAsyncError("Searching for player.","Player search will start - Please press 'OK'",Alert.AlertType.INFORMATION);
+            a.showAndWait();
+            //Switch to waiting
+            ConnectionManager.INSTANCE.Search(s);
             try{
                 App.setRoot("Game");
             }

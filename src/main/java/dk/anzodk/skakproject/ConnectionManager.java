@@ -31,16 +31,22 @@ public class ConnectionManager {
     ConnectionManager(ServerSocket s, int connTimeOutSec)
     {
         connectionTimeout = connTimeOutSec;
-        m_SetUp(s);
+        //m_SetUp(s);
     }
     ConnectionManager(ServerSocket s)
     {
         connectionTimeout = 180;
-        m_SetUp(s);
+        //m_SetUp(s);
     }
     ConnectionManager(Socket s)
     {
         connectionTimeout = 180;
+        m_SetUp(s);
+    }
+    void Search(ServerSocket s)
+    {
+        isServer = true;
+        serverSocket = s;
         m_SetUp(s);
     }
     /*@Override
@@ -78,8 +84,6 @@ public class ConnectionManager {
     
     private void m_SetUp(ServerSocket s)
     {
-        isServer = true;
-        serverSocket = s;
         callbackSystem.RegisterListener(new ServerListener());
         try{
             clientSocket = serverSocket.accept();

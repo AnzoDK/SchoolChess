@@ -59,6 +59,17 @@ public class ChessPiece {
     {
         return;
     }*/
+    
+    final void PlaceImage()
+    {
+        pieceImageView.setFitHeight(GameController.SpaceHeight);
+        pieceImageView.setFitWidth(GameController.SpaceWidth);
+        pieceImageView.setLayoutX((44+1) + (((int)currPos.row - ((int)'a')) * GameController.SpaceWidth));
+        pieceImageView.setLayoutY((38+1) + ((currPos.column-1) * GameController.SpaceHeight));
+        System.out.println("Placing" + name +" at: X: " +  pieceImageView.getLayoutX() + " Y: " + pieceImageView.getLayoutY() +  " Colum: " + currPos.AsString());
+        GameController.GamePane.getChildren().add(pieceImageView);
+    }
+    
     void MoveTo(ChessPos newPos, boolean local)
     {
         if(!local)

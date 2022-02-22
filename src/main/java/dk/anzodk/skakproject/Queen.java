@@ -30,12 +30,7 @@ public class Queen extends ChessPiece{
         {
             pieceImageView.setImage(new Image("dk/anzodk/skakproject/pieces/black_queen.png"));
         }
-        pieceImageView.setFitHeight(h);
-        pieceImageView.setFitWidth(w);
-        pieceImageView.setLayoutX((44+1) + (((int)currPos.row - ((int)'a')) * w));
-        pieceImageView.setLayoutY((38+1) + ((currPos.column-1) * h));
-        System.out.println("Placing Bishop at: X: " +  pieceImageView.getLayoutX() + " Y: " + pieceImageView.getLayoutY() +  " Colum: " + currPos.AsString());
-        gameBoard.getChildren().add(pieceImageView);
+        PlaceImage();
     }
     
     @Override

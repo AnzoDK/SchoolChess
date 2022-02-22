@@ -65,7 +65,7 @@ public class King extends ChessPiece{
             
             for(int x = -1; x < 2; x++)
             {
-                for(int y = 1; y >= 0; y--)
+                for(int y = 1; y >= -1; y--)
                 {
                     if(x == 0 && y == 0)
                     {
@@ -115,27 +115,9 @@ public class King extends ChessPiece{
 
     }
     @Override
-    public boolean ValidateMove(ChessPos to, int moveCount)
+    public void OnDeath()
     {
-        int fieldMod = (isWhite ? 1 : -1);
-        if(currPos.row == to.row)
-        {
-            if(currPos.column+fieldMod == to.column)
-            {
-                return true;
-            }
-            else if(currPos.column+(fieldMod*2) == to.column)
-            {
-                if(moveCount == 1)
-                {
-                    return true;
-                }
-                return false;
-            }
-            return false;
-        }
-        return false;
-
+        ConnectionManager.INSTANCE.Send("END "+(isWhite ? "White" : "Black" )+ " Lost");
     }
     
 }

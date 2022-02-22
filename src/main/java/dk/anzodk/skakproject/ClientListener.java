@@ -19,4 +19,18 @@ public class ClientListener extends AnzoHorribleBaseCallback{
         System.out.println("Sever has left the Game");
         ConnectionManager.INSTANCE.KillConnection();
     }
+    @Override void onVictory(String msg)
+    {
+        System.out.println("You Won!");
+        //GameController.GamePane.fireEvent(new EndGameEvent(EndGameEvent.GAME_WIN));
+        GameController.StringQueue.add("WIN");
+    }
+    
+    @Override
+    public void onDefeat(String msg)
+    {
+        System.out.println("You Lost!");
+        //GameController.GamePane.fireEvent(new EndGameEvent(EndGameEvent.GAME_LOSS));
+        GameController.StringQueue.add("LOSS");
+    }
 }

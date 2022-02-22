@@ -5,6 +5,7 @@
 package dk.anzodk.skakproject;
 
 import java.io.IOException;
+import java.lang.Thread;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
@@ -18,6 +19,10 @@ import javafx.scene.control.Button;
 import javafx.scene.paint.*;
 import javafx.scene.image.*;
 import java.util.Map;
+import javafx.scene.control.Alert;
+
+import javafx.concurrent.Task;
+
 /**
  * FXML Controller class
  *
@@ -45,6 +50,9 @@ public class GameController implements Initializable {
     
     public static double SpaceWidth;
     public static double SpaceHeight;
+    public static Task<Void> _task;
+    public static Thread _thread;
+    public static ArrayList<String> StringQueue = new ArrayList<>();
     
     /**
      * Initializes the controller class.
@@ -60,10 +68,64 @@ public class GameController implements Initializable {
         GameController.SpaceHeight = spaceH;
         GameController.GamePane = mainPane;
         
+        GamePane.addEventHandler(EndGameEvent.GAME_WIN, event -> {
+            
+            ChessLobbyController.DisplayError("You WON!", "You WON!", Alert.AlertType.NONE);
+            
+        });
+        GamePane.addEventHandler(EndGameEvent.GAME_LOSS, event -> {
+            
+            ChessLobbyController.DisplayError("You LOST!", "You LOST!", Alert.AlertType.NONE);
+            
+        });
+        
         SetUpChess();
         DrawBoard(spaceW, spaceH);
         DrawPieces();
         
+        /*_task = new Task<>()
+        {
+            @Override
+            protected Void call() throws Exception
+            {
+                System.out.println("Task Start");
+                while(true)
+                {
+                if(!GameController.StringQueue.isEmpty())
+                {
+                    if(GameController.StringQueue.get(0).equals("WIN"))
+                    {
+                        //GameController.GamePane.fireEvent(new EndGameEvent(EndGameEvent.GAME_WIN));
+                        System.out.println("Task In Progress");
+                        ChessLobbyController.DisplayError("You WON!", "You WON!", Alert.AlertType.NONE);
+                    }
+                    else if(GameController.StringQueue.get(0).equals("LOSS"))
+                    {
+                        //GameController.GamePane.fireEvent(new EndGameEvent(EndGameEvent.GAME_LOSS));
+                        System.out.println("Task In Progress");
+                        ChessLobbyController.DisplayError("You LOST!", "You LOST!", Alert.AlertType.NONE);                 
+                    }
+                    StringQueue.remove(GameController.StringQueue.get(0));
+                }
+                }
+                //return null;
+            }
+            
+            @Override
+            protected void succeeded()
+            {
+                //GameController._task.run();
+            }
+            
+            @Override
+            protected void failed()
+            {
+                System.out.println("Task Died");
+            }
+        };
+        _thread = new Thread(_task);
+        _thread.setDaemon(false);
+        _thread.start();*/
         
     }  
     

@@ -28,6 +28,20 @@ public class AnzoHorribleCallbackSystem {
                 listeners.get(i).onClose(rawString);
             }
         }
+        else if(rawString.contains("END"))
+        {
+            for(int i = 0; i < listeners.size(); i++)
+            {
+                if(rawString.contains("White") && ChessController.INSTANCE.isWhite)
+                {
+                    listeners.get(i).onDefeat(rawString);
+                }
+                else
+                {
+                    listeners.get(i).onVictory(rawString);
+                }
+            }
+        }
     }
     public void RegisterListener(AnzoHorribleBaseCallback listener)
     {

@@ -19,10 +19,9 @@ public class AnzoHorribleBaseCallback {
     {
         
     }
-    
     void onVictory(String msg)
     {
-        
+        return;
     }
     
     void onDefeat(String msg)

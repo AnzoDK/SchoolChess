@@ -69,6 +69,7 @@ public class ChessPiece {
         {
             System.out.println(name + " took " + ChessController.INSTANCE.GetPieceOnPos(newPos).name + " on " + newPos.AsString());
             ChessController.INSTANCE.RemovePieceFromPlay(ChessController.INSTANCE.GetPieceOnPos(newPos));
+            ChessController.INSTANCE.GetPieceOnPos(newPos).OnDeath();
         }
         ChessPos oldPos = new ChessPos(currPos);
         ChessController.INSTANCE.ClearPieceOnPos(newPos);
@@ -94,6 +95,10 @@ public class ChessPiece {
     boolean ValidateMove(ChessPos to, int MoveCount)
     {
         return false;
+    }
+    public void OnDeath()
+    {
+        return;
     }
     public void CreateMoveFor(ChessPos pos)
     {

@@ -48,108 +48,42 @@ public class Queen extends ChessPiece{
             //Move in X positive
             while(!(ChessController.INSTANCE.ContainsKey(new ChessPos((char)((int)currPos.row+c),currPos.column))) && ((int)currPos.row+c) < 'h'+1)
             {
-                ImageView t = new ImageView();
-                t.setImage(ChessController.INSTANCE.__Move_Image__);
-                t.setFitHeight(GameController.SpaceHeight);
-                t.setFitWidth(GameController.SpaceWidth);
-                t.setLayoutX((44+1) + (((int)currPos.row - ((int)'a')+c) * GameController.SpaceWidth));
-                t.setLayoutY((38+1) + ((currPos.column-1) * GameController.SpaceHeight));
-                String id = "";
-                id += (char)((int)currPos.row+c);
-                id += currPos.column;
-                t.setId(id);
-                GameController.GamePane.getChildren().add(t);
-                currMoves.add(t);
+                CreateMoveFor(new ChessPos((char)((int)currPos.row+c),currPos.column));
                 c++;
             }
             if(ChessController.INSTANCE.ContainsKey(new ChessPos((char)((int)currPos.row+c),currPos.column)) && ((int)currPos.row+c) < 'h'+1)
             {
                 if(ChessController.INSTANCE.GetPieceOnPos(new ChessPos((char)((int)currPos.row+c),currPos.column)).isWhite != isWhite)
                 {
-                    ImageView t = new ImageView();
-                    t.setImage(ChessController.INSTANCE.__Move_Image__);
-                    t.setFitHeight(GameController.SpaceHeight);
-                    t.setFitWidth(GameController.SpaceWidth);
-                    t.setLayoutX((44+1) + (((int)currPos.row - ((int)'a')+c) * GameController.SpaceWidth));
-                    t.setLayoutY((38+1) + ((currPos.column-1) * GameController.SpaceHeight));
-                    String id = "";
-                    id += (char)((int)currPos.row+c);
-                    id += currPos.column;
-                    t.setId(id);
-                    GameController.GamePane.getChildren().add(t);
-                    currMoves.add(t);
+                    CreateMoveFor(new ChessPos((char)((int)currPos.row+c),currPos.column));
                 }
             }
             c = 1;
             //Move in X Negative
             while(!(ChessController.INSTANCE.ContainsKey(new ChessPos((char)((int)currPos.row-c),currPos.column))) && ((int)currPos.row-c) > (int)'a'-1)
             {
-                ImageView t = new ImageView();
-                t.setImage(ChessController.INSTANCE.__Move_Image__);
-                t.setFitHeight(GameController.SpaceHeight);
-                t.setFitWidth(GameController.SpaceWidth);
-                t.setLayoutX((44+1) + (((int)currPos.row - ((int)'a')-c) * GameController.SpaceWidth));
-                t.setLayoutY((38+1) + ((currPos.column-1) * GameController.SpaceHeight));
-                String id = "";
-                id += (char)((int)currPos.row-c);
-                id += currPos.column;
-                t.setId(id);
-                GameController.GamePane.getChildren().add(t);
-                currMoves.add(t);
+                CreateMoveFor(new ChessPos((char)((int)currPos.row-c),currPos.column));
                 c++;
             }
             if(ChessController.INSTANCE.ContainsKey(new ChessPos((char)((int)currPos.row-c),currPos.column)) && ((int)currPos.row-c) > (int)'a'-1)
             {
                 if(ChessController.INSTANCE.GetPieceOnPos(new ChessPos((char)((int)currPos.row-c),currPos.column)).isWhite != isWhite)
                 {
-                    ImageView t = new ImageView();
-                    t.setImage(ChessController.INSTANCE.__Move_Image__);
-                    t.setFitHeight(GameController.SpaceHeight);
-                    t.setFitWidth(GameController.SpaceWidth);
-                    t.setLayoutX((44+1) + (((int)currPos.row - ((int)'a')-c) * GameController.SpaceWidth));
-                    t.setLayoutY((38+1) + ((currPos.column-1) * GameController.SpaceHeight));
-                    String id = "";
-                    id += (char)((int)currPos.row-c);
-                    id += currPos.column;
-                    t.setId(id);
-                    GameController.GamePane.getChildren().add(t);
-                    currMoves.add(t);
+                    CreateMoveFor(new ChessPos((char)((int)currPos.row-c),currPos.column));
                 }
             }
             c = 1;
             //Move in Y Towards Center
             while(!(ChessController.INSTANCE.ContainsKey(new ChessPos((char)((int)currPos.row),currPos.column+(c*fieldMod)))) && (isWhite ? (currPos.column+(c*fieldMod) < 9) : (currPos.column+(c*fieldMod) > 0)))
             {
-                ImageView t = new ImageView();
-                t.setImage(ChessController.INSTANCE.__Move_Image__);
-                t.setFitHeight(GameController.SpaceHeight);
-                t.setFitWidth(GameController.SpaceWidth);
-                t.setLayoutX((44+1) + (((int)currPos.row - ((int)'a')) * GameController.SpaceWidth));
-                t.setLayoutY((38+1) + ((currPos.column+(c*fieldMod)-1) * GameController.SpaceHeight));
-                String id = "";
-                id += (char)currPos.row;
-                id += currPos.column+(c*fieldMod);
-                t.setId(id);
-                GameController.GamePane.getChildren().add(t);
-                currMoves.add(t);
+                CreateMoveFor(new ChessPos((char)((int)currPos.row),currPos.column+(c*fieldMod)));
                 c++;
             }
             if(ChessController.INSTANCE.ContainsKey(new ChessPos((char)((int)currPos.row),currPos.column+(c*fieldMod))) && (isWhite ? (currPos.column+(c*fieldMod) < 9) : (currPos.column+(c*fieldMod) > 0)))
             {
                 if(ChessController.INSTANCE.GetPieceOnPos(new ChessPos((char)((int)currPos.row),currPos.column+(c*fieldMod))).isWhite != isWhite)
                 {
-                    ImageView t = new ImageView();
-                    t.setImage(ChessController.INSTANCE.__Move_Image__);
-                    t.setFitHeight(GameController.SpaceHeight);
-                    t.setFitWidth(GameController.SpaceWidth);
-                    t.setLayoutX((44+1) + (((int)currPos.row - ((int)'a')) * GameController.SpaceWidth));
-                    t.setLayoutY((38+1) + ((currPos.column+(c*fieldMod)-1) * GameController.SpaceHeight));
-                    String id = "";
-                    id += (char)((int)currPos.row);
-                    id += currPos.column+(c*fieldMod);
-                    t.setId(id);
-                    GameController.GamePane.getChildren().add(t);
-                    currMoves.add(t);
+                    CreateMoveFor(new ChessPos((char)((int)currPos.row),currPos.column+(c*fieldMod)));
                 }
             }
             c = 1;
@@ -157,18 +91,7 @@ public class Queen extends ChessPiece{
             fieldMod = fieldMod*-1;
             while(!(ChessController.INSTANCE.ContainsKey(new ChessPos((char)((int)currPos.row),currPos.column+(c*fieldMod)))) && (isWhite ? (currPos.column+(c*fieldMod) > 0) : (currPos.column+(c*fieldMod) < 9)))
             {
-                ImageView t = new ImageView();
-                t.setImage(ChessController.INSTANCE.__Move_Image__);
-                t.setFitHeight(GameController.SpaceHeight);
-                t.setFitWidth(GameController.SpaceWidth);
-                t.setLayoutX((44+1) + (((int)currPos.row - ((int)'a')) * GameController.SpaceWidth));
-                t.setLayoutY((38+1) + ((currPos.column+(c*fieldMod)-1) * GameController.SpaceHeight));
-                String id = "";
-                id += (char)currPos.row;
-                id += currPos.column+(c*fieldMod);
-                t.setId(id);
-                GameController.GamePane.getChildren().add(t);
-                currMoves.add(t);
+                CreateMoveFor(new ChessPos((char)((int)currPos.row),currPos.column+(c*fieldMod)));
                 c++;
             }
             
@@ -176,18 +99,7 @@ public class Queen extends ChessPiece{
             {
                 if(ChessController.INSTANCE.GetPieceOnPos(new ChessPos((char)((int)currPos.row),currPos.column+(c*fieldMod))).isWhite != isWhite)
                 {
-                    ImageView t = new ImageView();
-                    t.setImage(ChessController.INSTANCE.__Move_Image__);
-                    t.setFitHeight(GameController.SpaceHeight);
-                    t.setFitWidth(GameController.SpaceWidth);
-                    t.setLayoutX((44+1) + (((int)currPos.row - ((int)'a')) * GameController.SpaceWidth));
-                    t.setLayoutY((38+1) + ((currPos.column+(c*fieldMod)-1) * GameController.SpaceHeight));
-                    String id = "";
-                    id += (char)((int)currPos.row);
-                    id += currPos.column+(c*fieldMod);
-                    t.setId(id);
-                    GameController.GamePane.getChildren().add(t);
-                    currMoves.add(t);
+                    CreateMoveFor(new ChessPos((char)((int)currPos.row),currPos.column+(c*fieldMod)));
                 }
             }
             
@@ -196,18 +108,7 @@ public class Queen extends ChessPiece{
        //X++
             while(!(ChessController.INSTANCE.ContainsKey(new ChessPos((char)((int)currPos.row+c),currPos.column+(c*fieldMod)))) && (int)currPos.row+c >= (int)'a' && (int)currPos.row+c <= (int)'h' && currPos.column+(c*fieldMod) > 0 && currPos.column+(c*fieldMod) < 9)
             {
-                ImageView t = new ImageView();
-                t.setImage(ChessController.INSTANCE.__Move_Image__);
-                t.setFitHeight(GameController.SpaceHeight);
-                t.setFitWidth(GameController.SpaceWidth);
-                t.setLayoutX((44+1) + (((int)currPos.row - ((int)'a')+c) * GameController.SpaceWidth));
-                t.setLayoutY((38+1) + ((currPos.column+(c*fieldMod)-1) * GameController.SpaceHeight));
-                String id = "";
-                id += (char)((int)currPos.row+c);
-                id += currPos.column+(c*fieldMod);
-                t.setId(id);
-                GameController.GamePane.getChildren().add(t);
-                currMoves.add(t);
+                CreateMoveFor(new ChessPos((char)((int)currPos.row+c),currPos.column+(c*fieldMod)));
                 c++;
             }
             if(( (ChessController.INSTANCE.GetPieceOnPos(new ChessPos((char)((int)currPos.row+c),currPos.column+(c*fieldMod))) == null ? ChessController.INSTANCE.isWhite : ChessController.INSTANCE.GetPieceOnPos(new ChessPos((char)((int)currPos.row+c),currPos.column+(c*fieldMod))).isWhite ) != ChessController.INSTANCE.isWhite) && (int)currPos.row+c >= (int)'a' && (int)currPos.row+c <= (int)'h' && currPos.column+(c*fieldMod) > 0 && currPos.column+(c*fieldMod) < 9)
@@ -218,18 +119,7 @@ public class Queen extends ChessPiece{
             c = 1;
             while(!(ChessController.INSTANCE.ContainsKey(new ChessPos((char)((int)currPos.row-c),currPos.column+(c*fieldMod)))) && (int)currPos.row-c <= (int)'h' && (int)currPos.row-c >= (int)'a' && currPos.column+(c*fieldMod) > 0 && currPos.column+(c*fieldMod) < 9)
             {
-                ImageView t = new ImageView();
-                t.setImage(ChessController.INSTANCE.__Move_Image__);
-                t.setFitHeight(GameController.SpaceHeight);
-                t.setFitWidth(GameController.SpaceWidth);
-                t.setLayoutX((44+1) + (((int)currPos.row - ((int)'a')-c) * GameController.SpaceWidth));
-                t.setLayoutY((38+1) + ((currPos.column+(c*fieldMod)-1) * GameController.SpaceHeight));
-                String id = "";
-                id += (char)((int)currPos.row-c);
-                id += currPos.column+(c*fieldMod);
-                t.setId(id);
-                GameController.GamePane.getChildren().add(t);
-                currMoves.add(t);
+                CreateMoveFor(new ChessPos((char)((int)currPos.row-c),currPos.column+(c*fieldMod)));
                 c++;
             }
             if(( (ChessController.INSTANCE.GetPieceOnPos(new ChessPos((char)((int)currPos.row-c),currPos.column+(c*fieldMod))) == null ? ChessController.INSTANCE.isWhite : ChessController.INSTANCE.GetPieceOnPos(new ChessPos((char)((int)currPos.row-c),currPos.column+(c*fieldMod))).isWhite) != ChessController.INSTANCE.isWhite) && (int)currPos.row-c <= (int)'h' && (int)currPos.row-c >= (int)'a' && currPos.column+(c*fieldMod) > 0 && currPos.column+(c*fieldMod) < 9)
@@ -240,18 +130,7 @@ public class Queen extends ChessPiece{
             c = 1;
             while(!(ChessController.INSTANCE.ContainsKey(new ChessPos((char)((int)currPos.row-c),currPos.column-(c*fieldMod)))) && (int)currPos.row-c <= (int)'h' && (int)currPos.row-c >= (int)'a' && (int)currPos.column-(c*fieldMod) > 0 && (int)currPos.column-(c*fieldMod) < 9)
             {
-                ImageView t = new ImageView();
-                t.setImage(ChessController.INSTANCE.__Move_Image__);
-                t.setFitHeight(GameController.SpaceHeight);
-                t.setFitWidth(GameController.SpaceWidth);
-                t.setLayoutX((44+1) + (((int)currPos.row - ((int)'a')-c) * GameController.SpaceWidth));
-                t.setLayoutY((38+1) + ((currPos.column-(c*fieldMod)-1) * GameController.SpaceHeight));
-                String id = "";
-                id += (char)((int)currPos.row-c);
-                id += currPos.column-(c*fieldMod);
-                t.setId(id);
-                GameController.GamePane.getChildren().add(t);
-                currMoves.add(t);
+                CreateMoveFor(new ChessPos((char)((int)currPos.row-c),currPos.column-(c*fieldMod)));
                 c++;
             }
             if(( (ChessController.INSTANCE.GetPieceOnPos(new ChessPos((char)((int)currPos.row-c),currPos.column-(c*fieldMod))) == null ? ChessController.INSTANCE.isWhite : ChessController.INSTANCE.GetPieceOnPos(new ChessPos((char)((int)currPos.row-c),currPos.column-(c*fieldMod))).isWhite) != ChessController.INSTANCE.isWhite) && (int)currPos.row-c <= (int)'h' && (int)currPos.row-c >= (int)'a' && (int)currPos.column-(c*fieldMod) > 0 && (int)currPos.column-(c*fieldMod) < 9)
@@ -262,18 +141,7 @@ public class Queen extends ChessPiece{
             c = 1;
             while(!(ChessController.INSTANCE.ContainsKey(new ChessPos((char)((int)currPos.row+c),currPos.column-(c*fieldMod)))) && (int)currPos.column-(c*fieldMod) > 0 && (int)currPos.column-(c*fieldMod) < 9 && (int)currPos.row+c >= (int)'a' && (int)currPos.row+c <= (int)'h')
             {
-                ImageView t = new ImageView();
-                t.setImage(ChessController.INSTANCE.__Move_Image__);
-                t.setFitHeight(GameController.SpaceHeight);
-                t.setFitWidth(GameController.SpaceWidth);
-                t.setLayoutX((44+1) + (((int)currPos.row - ((int)'a')+c) * GameController.SpaceWidth));
-                t.setLayoutY((38+1) + ((currPos.column-(c*fieldMod)-1) * GameController.SpaceHeight));
-                String id = "";
-                id += (char)((int)currPos.row+c);
-                id += currPos.column-(c*fieldMod);
-                t.setId(id);
-                GameController.GamePane.getChildren().add(t);
-                currMoves.add(t);
+                CreateMoveFor(new ChessPos((char)((int)currPos.row+c),currPos.column-(c*fieldMod)));
                 c++;
             }
             if(( (ChessController.INSTANCE.GetPieceOnPos(new ChessPos((char)((int)currPos.row+c),currPos.column-(c*fieldMod))) == null ? ChessController.INSTANCE.isWhite : ChessController.INSTANCE.GetPieceOnPos(new ChessPos((char)((int)currPos.row+c),currPos.column-(c*fieldMod))).isWhite) != ChessController.INSTANCE.isWhite) && (int)currPos.column-(c*fieldMod) > 0 && (int)currPos.column-(c*fieldMod) < 9 && (int)currPos.row+c >= (int)'a' && (int)currPos.row+c <= (int)'h')

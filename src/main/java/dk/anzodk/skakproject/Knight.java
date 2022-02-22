@@ -44,321 +44,304 @@ public class Knight extends ChessPiece {
         if(showMoves)
         {
             
-            //I hate myself, But I hate my code even more
-            //X++
-            // THE OLD WAYS ARE DEAD
-          /*
-           if(!ChessController.INSTANCE.ContainsKey(new ChessPos((char)((int)currPos.row+c),currPos.column+(fieldMod*2))) && (int)currPos.row+c >= (int)'a' && (int)currPos.row+c <= (int)'h' && currPos.column+(fieldMod*2) > 0 && currPos.column+(fieldMod*2) < 9 )
-                {
-                    //prevent attacking allies
-                     if(ChessController.INSTANCE.GetPieceOnPos(new ChessPos((char)((int)currPos.row+c),currPos.column+(fieldMod*2))).isWhite != ChessController.INSTANCE.isWhite)
-                    {
-                   
-                    }
-                       
-            }
-*/
             int fieldMod = 2;
             int c = 1;
-         TargetPos=new ChessPos((char)((int)currPos.row+c),currPos.column+(fieldMod));
-         if(TargetPos.row >= (int)'a' && TargetPos.row <= (int)'h' && TargetPos.column > 0 && TargetPos.column < 9)
-         {                         
-            if((!ChessController.INSTANCE.ContainsKey(TargetPos)))
-                    {
+            TargetPos=new ChessPos((char)((int)currPos.row+c),currPos.column+(fieldMod));
+            if(TargetPos.row >= (int)'a' && TargetPos.row <= (int)'h' && TargetPos.column > 0 && TargetPos.column < 9)
+            {                         
+                if((!ChessController.INSTANCE.ContainsKey(TargetPos)))
+                {
                          //prevent attacking allies
-                 ImageView t = new ImageView();
-                t.setImage(ChessController.INSTANCE.__Move_Image__);
-                t.setFitHeight(GameController.SpaceHeight);
-                t.setFitWidth(GameController.SpaceWidth);
-                t.setLayoutX((44+1) + (((int)TargetPos.row - ((int)'a')) * GameController.SpaceWidth));
-                t.setLayoutY((38+1) + ((TargetPos.column-1) * GameController.SpaceHeight));
-                String id = "";
-                id += (char)((int)TargetPos.row);
-                id += TargetPos.column;
-                t.setId(id);
-                GameController.GamePane.getChildren().add(t);
-                currMoves.add(t);                                                 
-                    }
-            else if(ChessController.INSTANCE.GetPieceOnPos(TargetPos).isWhite != ChessController.INSTANCE.isWhite)
-            {
-                     ImageView t = new ImageView();
-                t.setImage(ChessController.INSTANCE.__Move_Image__);
-                t.setFitHeight(GameController.SpaceHeight);
-                t.setFitWidth(GameController.SpaceWidth);
-                t.setLayoutX((44+1) + (((int)TargetPos.row - ((int)'a')) * GameController.SpaceWidth));
-                t.setLayoutY((38+1) + ((TargetPos.column-1) * GameController.SpaceHeight));
-                String id = "";
-                id += (char)((int)TargetPos.row);
-                id += TargetPos.column;
-                t.setId(id);
-                GameController.GamePane.getChildren().add(t);
-                currMoves.add(t);                                
-            }            
-         }
+                    ImageView t = new ImageView();
+                    t.setImage(ChessController.INSTANCE.__Move_Image__);
+                    t.setFitHeight(GameController.SpaceHeight);
+                    t.setFitWidth(GameController.SpaceWidth);
+                    t.setLayoutX((44+1) + (((int)TargetPos.row - ((int)'a')) * GameController.SpaceWidth));
+                    t.setLayoutY((38+1) + ((TargetPos.column-1) * GameController.SpaceHeight));
+                    String id = "";
+                    id += (char)((int)TargetPos.row);
+                    id += TargetPos.column;
+                    t.setId(id);
+                    GameController.GamePane.getChildren().add(t);
+                    currMoves.add(t);                                                 
+                }
+                else if(ChessController.INSTANCE.GetPieceOnPos(TargetPos).isWhite != ChessController.INSTANCE.isWhite)
+                {
+                         ImageView t = new ImageView();
+                    t.setImage(ChessController.INSTANCE.__Move_Image__);
+                    t.setFitHeight(GameController.SpaceHeight);
+                    t.setFitWidth(GameController.SpaceWidth);
+                    t.setLayoutX((44+1) + (((int)TargetPos.row - ((int)'a')) * GameController.SpaceWidth));
+                    t.setLayoutY((38+1) + ((TargetPos.column-1) * GameController.SpaceHeight));
+                    String id = "";
+                    id += (char)((int)TargetPos.row);
+                    id += TargetPos.column;
+                    t.setId(id);
+                    GameController.GamePane.getChildren().add(t);
+                    currMoves.add(t);                                
+                }            
+            }
          
-         fieldMod = 2;
-         c = -1;
-         TargetPos=new ChessPos((char)((int)currPos.row+c),currPos.column+(fieldMod));
-   if(TargetPos.row >= (int)'a' && TargetPos.row <= (int)'h' && TargetPos.column > 0 && TargetPos.column < 9)
-         {                         
-            if((!ChessController.INSTANCE.ContainsKey(TargetPos)))
-                    {
-                         //prevent attacking allies
-                 ImageView t = new ImageView();
-                t.setImage(ChessController.INSTANCE.__Move_Image__);
-                t.setFitHeight(GameController.SpaceHeight);
-                t.setFitWidth(GameController.SpaceWidth);
-                t.setLayoutX((44+1) + (((int)TargetPos.row - ((int)'a')) * GameController.SpaceWidth));
-                t.setLayoutY((38+1) + ((TargetPos.column-1) * GameController.SpaceHeight));
-                String id = "";
-                id += (char)((int)TargetPos.row);
-                id += TargetPos.column;
-                t.setId(id);
-                GameController.GamePane.getChildren().add(t);
-                currMoves.add(t);                                                 
-                    }
-            else if(ChessController.INSTANCE.GetPieceOnPos(TargetPos).isWhite != ChessController.INSTANCE.isWhite)
-            {
+            fieldMod = 2;
+            c = -1;
+            TargetPos=new ChessPos((char)((int)currPos.row+c),currPos.column+(fieldMod));
+            if(TargetPos.row >= (int)'a' && TargetPos.row <= (int)'h' && TargetPos.column > 0 && TargetPos.column < 9)
+            {                         
+                if((!ChessController.INSTANCE.ContainsKey(TargetPos)))
+                {
+                    //prevent attacking allies
+                    ImageView t = new ImageView();
+                    t.setImage(ChessController.INSTANCE.__Move_Image__);
+                    t.setFitHeight(GameController.SpaceHeight);
+                    t.setFitWidth(GameController.SpaceWidth);
+                    t.setLayoutX((44+1) + (((int)TargetPos.row - ((int)'a')) * GameController.SpaceWidth));
+                    t.setLayoutY((38+1) + ((TargetPos.column-1) * GameController.SpaceHeight));
+                    String id = "";
+                    id += (char)((int)TargetPos.row);
+                    id += TargetPos.column;
+                    t.setId(id);
+                    GameController.GamePane.getChildren().add(t);
+                    currMoves.add(t);                                                 
+                }
+                else if(ChessController.INSTANCE.GetPieceOnPos(TargetPos).isWhite != ChessController.INSTANCE.isWhite)
+                {
+                    ImageView t = new ImageView();
+                    t.setImage(ChessController.INSTANCE.__Move_Image__);
+                    t.setFitHeight(GameController.SpaceHeight);
+                    t.setFitWidth(GameController.SpaceWidth);
+                    t.setLayoutX((44+1) + (((int)TargetPos.row - ((int)'a')) * GameController.SpaceWidth));
+                    t.setLayoutY((38+1) + ((TargetPos.column-1) * GameController.SpaceHeight));
+                    String id = "";
+                    id += (char)((int)TargetPos.row);
+                    id += TargetPos.column;
+                    t.setId(id);
+                    GameController.GamePane.getChildren().add(t);
+                    currMoves.add(t);                                
+                }            
+            }
+            fieldMod = -2;
+            c = 1;
+            TargetPos=new ChessPos((char)((int)currPos.row+c),currPos.column+(fieldMod));
+            if(TargetPos.row >= (int)'a' && TargetPos.row <= (int)'h' && TargetPos.column > 0 && TargetPos.column < 9)
+            {                         
+                if((!ChessController.INSTANCE.ContainsKey(TargetPos)))
+                {
+                    //prevent attacking allies
+                    ImageView t = new ImageView();
+                    t.setImage(ChessController.INSTANCE.__Move_Image__);
+                    t.setFitHeight(GameController.SpaceHeight);
+                    t.setFitWidth(GameController.SpaceWidth);
+                    t.setLayoutX((44+1) + (((int)TargetPos.row - ((int)'a')) * GameController.SpaceWidth));
+                    t.setLayoutY((38+1) + ((TargetPos.column-1) * GameController.SpaceHeight));
+                    String id = "";
+                    id += (char)((int)TargetPos.row);
+                    id += TargetPos.column;
+                    t.setId(id);
+                    GameController.GamePane.getChildren().add(t);
+                    currMoves.add(t);                                                 
+                }
+                else if(ChessController.INSTANCE.GetPieceOnPos(TargetPos).isWhite != ChessController.INSTANCE.isWhite)
+                {
+                    ImageView t = new ImageView();
+                    t.setImage(ChessController.INSTANCE.__Move_Image__);
+                    t.setFitHeight(GameController.SpaceHeight);
+                    t.setFitWidth(GameController.SpaceWidth);
+                    t.setLayoutX((44+1) + (((int)TargetPos.row - ((int)'a')) * GameController.SpaceWidth));
+                    t.setLayoutY((38+1) + ((TargetPos.column-1) * GameController.SpaceHeight));
+                    String id = "";
+                    id += (char)((int)TargetPos.row);
+                    id += TargetPos.column;
+                    t.setId(id);
+                    GameController.GamePane.getChildren().add(t);
+                    currMoves.add(t);                                
+                }            
+            }
+            fieldMod = -2;
+            c = -1;
+            TargetPos=new ChessPos((char)((int)currPos.row+c),currPos.column+(fieldMod));
+            if(TargetPos.row >= (int)'a' && TargetPos.row <= (int)'h' && TargetPos.column > 0 && TargetPos.column < 9)
+            {                         
+                if((!ChessController.INSTANCE.ContainsKey(TargetPos)))
+                {
+                    //prevent attacking allies
+                    ImageView t = new ImageView();
+                    t.setImage(ChessController.INSTANCE.__Move_Image__);
+                    t.setFitHeight(GameController.SpaceHeight);
+                    t.setFitWidth(GameController.SpaceWidth);
+                    t.setLayoutX((44+1) + (((int)TargetPos.row - ((int)'a')) * GameController.SpaceWidth));
+                    t.setLayoutY((38+1) + ((TargetPos.column-1) * GameController.SpaceHeight));
+                    String id = "";
+                    id += (char)((int)TargetPos.row);
+                    id += TargetPos.column;
+                    t.setId(id);
+                    GameController.GamePane.getChildren().add(t);
+                    currMoves.add(t);                                                 
+                }
+                else if(ChessController.INSTANCE.GetPieceOnPos(TargetPos).isWhite != ChessController.INSTANCE.isWhite)
+                {
                      ImageView t = new ImageView();
-                t.setImage(ChessController.INSTANCE.__Move_Image__);
-                t.setFitHeight(GameController.SpaceHeight);
-                t.setFitWidth(GameController.SpaceWidth);
-                t.setLayoutX((44+1) + (((int)TargetPos.row - ((int)'a')) * GameController.SpaceWidth));
-                t.setLayoutY((38+1) + ((TargetPos.column-1) * GameController.SpaceHeight));
-                String id = "";
-                id += (char)((int)TargetPos.row);
-                id += TargetPos.column;
-                t.setId(id);
-                GameController.GamePane.getChildren().add(t);
-                currMoves.add(t);                                
-            }            
-         }
-         fieldMod = -2;
-         c = 1;
-         TargetPos=new ChessPos((char)((int)currPos.row+c),currPos.column+(fieldMod));
- if(TargetPos.row >= (int)'a' && TargetPos.row <= (int)'h' && TargetPos.column > 0 && TargetPos.column < 9)
-         {                         
-            if((!ChessController.INSTANCE.ContainsKey(TargetPos)))
-                    {
-                         //prevent attacking allies
-                 ImageView t = new ImageView();
-                t.setImage(ChessController.INSTANCE.__Move_Image__);
-                t.setFitHeight(GameController.SpaceHeight);
-                t.setFitWidth(GameController.SpaceWidth);
-                t.setLayoutX((44+1) + (((int)TargetPos.row - ((int)'a')) * GameController.SpaceWidth));
-                t.setLayoutY((38+1) + ((TargetPos.column-1) * GameController.SpaceHeight));
-                String id = "";
-                id += (char)((int)TargetPos.row);
-                id += TargetPos.column;
-                t.setId(id);
-                GameController.GamePane.getChildren().add(t);
-                currMoves.add(t);                                                 
-                    }
-            else if(ChessController.INSTANCE.GetPieceOnPos(TargetPos).isWhite != ChessController.INSTANCE.isWhite)
-            {
-                     ImageView t = new ImageView();
-                t.setImage(ChessController.INSTANCE.__Move_Image__);
-                t.setFitHeight(GameController.SpaceHeight);
-                t.setFitWidth(GameController.SpaceWidth);
-                t.setLayoutX((44+1) + (((int)TargetPos.row - ((int)'a')) * GameController.SpaceWidth));
-                t.setLayoutY((38+1) + ((TargetPos.column-1) * GameController.SpaceHeight));
-                String id = "";
-                id += (char)((int)TargetPos.row);
-                id += TargetPos.column;
-                t.setId(id);
-                GameController.GamePane.getChildren().add(t);
-                currMoves.add(t);                                
-            }            
-         }
-         fieldMod = -2;
-         c = -1;
-         TargetPos=new ChessPos((char)((int)currPos.row+c),currPos.column+(fieldMod));
- if(TargetPos.row >= (int)'a' && TargetPos.row <= (int)'h' && TargetPos.column > 0 && TargetPos.column < 9)
-         {                         
-            if((!ChessController.INSTANCE.ContainsKey(TargetPos)))
-                    {
-                         //prevent attacking allies
-                 ImageView t = new ImageView();
-                t.setImage(ChessController.INSTANCE.__Move_Image__);
-                t.setFitHeight(GameController.SpaceHeight);
-                t.setFitWidth(GameController.SpaceWidth);
-                t.setLayoutX((44+1) + (((int)TargetPos.row - ((int)'a')) * GameController.SpaceWidth));
-                t.setLayoutY((38+1) + ((TargetPos.column-1) * GameController.SpaceHeight));
-                String id = "";
-                id += (char)((int)TargetPos.row);
-                id += TargetPos.column;
-                t.setId(id);
-                GameController.GamePane.getChildren().add(t);
-                currMoves.add(t);                                                 
-                    }
-            else if(ChessController.INSTANCE.GetPieceOnPos(TargetPos).isWhite != ChessController.INSTANCE.isWhite)
-            {
-                     ImageView t = new ImageView();
-                t.setImage(ChessController.INSTANCE.__Move_Image__);
-                t.setFitHeight(GameController.SpaceHeight);
-                t.setFitWidth(GameController.SpaceWidth);
-                t.setLayoutX((44+1) + (((int)TargetPos.row - ((int)'a')) * GameController.SpaceWidth));
-                t.setLayoutY((38+1) + ((TargetPos.column-1) * GameController.SpaceHeight));
-                String id = "";
-                id += (char)((int)TargetPos.row);
-                id += TargetPos.column;
-                t.setId(id);
-                GameController.GamePane.getChildren().add(t);
-                currMoves.add(t);                                
-            }            
-         }
-         fieldMod = 1;
-         c = 2;
-         TargetPos=new ChessPos((char)((int)currPos.row+c),currPos.column+(fieldMod));
- if(TargetPos.row >= (int)'a' && TargetPos.row <= (int)'h' && TargetPos.column > 0 && TargetPos.column < 9)
-         {                         
-            if((!ChessController.INSTANCE.ContainsKey(TargetPos)))
-                    {
-                         //prevent attacking allies
-                 ImageView t = new ImageView();
-                t.setImage(ChessController.INSTANCE.__Move_Image__);
-                t.setFitHeight(GameController.SpaceHeight);
-                t.setFitWidth(GameController.SpaceWidth);
-                t.setLayoutX((44+1) + (((int)TargetPos.row - ((int)'a')) * GameController.SpaceWidth));
-                t.setLayoutY((38+1) + ((TargetPos.column-1) * GameController.SpaceHeight));
-                String id = "";
-                id += (char)((int)TargetPos.row);
-                id += TargetPos.column;
-                t.setId(id);
-                GameController.GamePane.getChildren().add(t);
-                currMoves.add(t);                                                 
-                    }
-            else if(ChessController.INSTANCE.GetPieceOnPos(TargetPos).isWhite != ChessController.INSTANCE.isWhite)
-            {
-                     ImageView t = new ImageView();
-                t.setImage(ChessController.INSTANCE.__Move_Image__);
-                t.setFitHeight(GameController.SpaceHeight);
-                t.setFitWidth(GameController.SpaceWidth);
-                t.setLayoutX((44+1) + (((int)TargetPos.row - ((int)'a')) * GameController.SpaceWidth));
-                t.setLayoutY((38+1) + ((TargetPos.column-1) * GameController.SpaceHeight));
-                String id = "";
-                id += (char)((int)TargetPos.row);
-                id += TargetPos.column;
-                t.setId(id);
-                GameController.GamePane.getChildren().add(t);
-                currMoves.add(t);                                
-            }            
-         }
-        fieldMod = -1;
-         c = 2;
-         TargetPos=new ChessPos((char)((int)currPos.row+c),currPos.column+(fieldMod));
-        if(TargetPos.row >= (int)'a' && TargetPos.row <= (int)'h' && TargetPos.column > 0 && TargetPos.column < 9)
-         {                         
-            if((!ChessController.INSTANCE.ContainsKey(TargetPos)))
-                    {
-                         //prevent attacking allies
-                 ImageView t = new ImageView();
-                t.setImage(ChessController.INSTANCE.__Move_Image__);
-                t.setFitHeight(GameController.SpaceHeight);
-                t.setFitWidth(GameController.SpaceWidth);
-                t.setLayoutX((44+1) + (((int)TargetPos.row - ((int)'a')) * GameController.SpaceWidth));
-                t.setLayoutY((38+1) + ((TargetPos.column-1) * GameController.SpaceHeight));
-                String id = "";
-                id += (char)((int)TargetPos.row);
-                id += TargetPos.column;
-                t.setId(id);
-                GameController.GamePane.getChildren().add(t);
-                currMoves.add(t);                                                 
-                    }
-            else if(ChessController.INSTANCE.GetPieceOnPos(TargetPos).isWhite != ChessController.INSTANCE.isWhite)
-            {
-                     ImageView t = new ImageView();
-                t.setImage(ChessController.INSTANCE.__Move_Image__);
-                t.setFitHeight(GameController.SpaceHeight);
-                t.setFitWidth(GameController.SpaceWidth);
-                t.setLayoutX((44+1) + (((int)TargetPos.row - ((int)'a')) * GameController.SpaceWidth));
-                t.setLayoutY((38+1) + ((TargetPos.column-1) * GameController.SpaceHeight));
-                String id = "";
-                id += (char)((int)TargetPos.row);
-                id += TargetPos.column;
-                t.setId(id);
-                GameController.GamePane.getChildren().add(t);
-                currMoves.add(t);                                
-            }            
-         }
+                    t.setImage(ChessController.INSTANCE.__Move_Image__);
+                    t.setFitHeight(GameController.SpaceHeight);
+                    t.setFitWidth(GameController.SpaceWidth);
+                    t.setLayoutX((44+1) + (((int)TargetPos.row - ((int)'a')) * GameController.SpaceWidth));
+                    t.setLayoutY((38+1) + ((TargetPos.column-1) * GameController.SpaceHeight));
+                    String id = "";
+                    id += (char)((int)TargetPos.row);
+                    id += TargetPos.column;
+                    t.setId(id);
+                    GameController.GamePane.getChildren().add(t);
+                    currMoves.add(t);                                
+                }            
+            }
+            fieldMod = 1;
+            c = 2;
+            TargetPos=new ChessPos((char)((int)currPos.row+c),currPos.column+(fieldMod));
+            if(TargetPos.row >= (int)'a' && TargetPos.row <= (int)'h' && TargetPos.column > 0 && TargetPos.column < 9)
+            {                         
+                if((!ChessController.INSTANCE.ContainsKey(TargetPos)))
+                {
+                    //prevent attacking allies
+                    ImageView t = new ImageView();
+                    t.setImage(ChessController.INSTANCE.__Move_Image__);
+                    t.setFitHeight(GameController.SpaceHeight);
+                    t.setFitWidth(GameController.SpaceWidth);
+                    t.setLayoutX((44+1) + (((int)TargetPos.row - ((int)'a')) * GameController.SpaceWidth));
+                    t.setLayoutY((38+1) + ((TargetPos.column-1) * GameController.SpaceHeight));
+                    String id = "";
+                    id += (char)((int)TargetPos.row);
+                    id += TargetPos.column;
+                    t.setId(id);
+                    GameController.GamePane.getChildren().add(t);
+                    currMoves.add(t);                                                 
+                }
+                else if(ChessController.INSTANCE.GetPieceOnPos(TargetPos).isWhite != ChessController.INSTANCE.isWhite)
+                {
+                    ImageView t = new ImageView();
+                    t.setImage(ChessController.INSTANCE.__Move_Image__);
+                    t.setFitHeight(GameController.SpaceHeight);
+                    t.setFitWidth(GameController.SpaceWidth);
+                    t.setLayoutX((44+1) + (((int)TargetPos.row - ((int)'a')) * GameController.SpaceWidth));
+                    t.setLayoutY((38+1) + ((TargetPos.column-1) * GameController.SpaceHeight));
+                    String id = "";
+                    id += (char)((int)TargetPos.row);
+                    id += TargetPos.column;
+                    t.setId(id);
+                    GameController.GamePane.getChildren().add(t);
+                    currMoves.add(t);                                
+                }            
+            }
+            fieldMod = -1;
+            c = 2;
+            TargetPos=new ChessPos((char)((int)currPos.row+c),currPos.column+(fieldMod));
+            if(TargetPos.row >= (int)'a' && TargetPos.row <= (int)'h' && TargetPos.column > 0 && TargetPos.column < 9)
+            {                         
+                if((!ChessController.INSTANCE.ContainsKey(TargetPos)))
+                {
+                    //prevent attacking allies
+                    ImageView t = new ImageView();
+                    t.setImage(ChessController.INSTANCE.__Move_Image__);
+                    t.setFitHeight(GameController.SpaceHeight);
+                    t.setFitWidth(GameController.SpaceWidth);
+                    t.setLayoutX((44+1) + (((int)TargetPos.row - ((int)'a')) * GameController.SpaceWidth));
+                    t.setLayoutY((38+1) + ((TargetPos.column-1) * GameController.SpaceHeight));
+                    String id = "";
+                    id += (char)((int)TargetPos.row);
+                    id += TargetPos.column;
+                    t.setId(id);
+                    GameController.GamePane.getChildren().add(t);
+                    currMoves.add(t);                                                 
+                }
+                else if(ChessController.INSTANCE.GetPieceOnPos(TargetPos).isWhite != ChessController.INSTANCE.isWhite)
+                {
+                    ImageView t = new ImageView();
+                    t.setImage(ChessController.INSTANCE.__Move_Image__);
+                    t.setFitHeight(GameController.SpaceHeight);
+                    t.setFitWidth(GameController.SpaceWidth);
+                    t.setLayoutX((44+1) + (((int)TargetPos.row - ((int)'a')) * GameController.SpaceWidth));
+                    t.setLayoutY((38+1) + ((TargetPos.column-1) * GameController.SpaceHeight));
+                    String id = "";
+                    id += (char)((int)TargetPos.row);
+                    id += TargetPos.column;
+                    t.setId(id);
+                    GameController.GamePane.getChildren().add(t);
+                    currMoves.add(t);                                
+                }            
+            }
            fieldMod = 1;
-         c = -2;
-         TargetPos=new ChessPos((char)((int)currPos.row+c),currPos.column+(fieldMod));
-       if(TargetPos.row >= (int)'a' && TargetPos.row <= (int)'h' && TargetPos.column > 0 && TargetPos.column < 9)
-         {                         
-            if((!ChessController.INSTANCE.ContainsKey(TargetPos)))
-                    {
-                         //prevent attacking allies
-                 ImageView t = new ImageView();
-                t.setImage(ChessController.INSTANCE.__Move_Image__);
-                t.setFitHeight(GameController.SpaceHeight);
-                t.setFitWidth(GameController.SpaceWidth);
-                t.setLayoutX((44+1) + (((int)TargetPos.row - ((int)'a')) * GameController.SpaceWidth));
-                t.setLayoutY((38+1) + ((TargetPos.column-1) * GameController.SpaceHeight));
-                String id = "";
-                id += (char)((int)TargetPos.row);
-                id += TargetPos.column;
-                t.setId(id);
-                GameController.GamePane.getChildren().add(t);
-                currMoves.add(t);                                                 
-                    }
-            else if(ChessController.INSTANCE.GetPieceOnPos(TargetPos).isWhite != ChessController.INSTANCE.isWhite)
-            {
-                     ImageView t = new ImageView();
-                t.setImage(ChessController.INSTANCE.__Move_Image__);
-                t.setFitHeight(GameController.SpaceHeight);
-                t.setFitWidth(GameController.SpaceWidth);
-                t.setLayoutX((44+1) + (((int)TargetPos.row - ((int)'a')) * GameController.SpaceWidth));
-                t.setLayoutY((38+1) + ((TargetPos.column-1) * GameController.SpaceHeight));
-                String id = "";
-                id += (char)((int)TargetPos.row);
-                id += TargetPos.column;
-                t.setId(id);
-                GameController.GamePane.getChildren().add(t);
-                currMoves.add(t);                                
-            }            
-         }
-           fieldMod = -1;
-         c = -2;
-         TargetPos=new ChessPos((char)((int)currPos.row+c),currPos.column+(fieldMod));
-          if(TargetPos.row >= (int)'a' && TargetPos.row <= (int)'h' && TargetPos.column > 0 && TargetPos.column < 9)
-         {                         
-            if((!ChessController.INSTANCE.ContainsKey(TargetPos)))
-                    {
-                         //prevent attacking allies
-                 ImageView t = new ImageView();
-                t.setImage(ChessController.INSTANCE.__Move_Image__);
-                t.setFitHeight(GameController.SpaceHeight);
-                t.setFitWidth(GameController.SpaceWidth);
-                t.setLayoutX((44+1) + (((int)TargetPos.row - ((int)'a')) * GameController.SpaceWidth));
-                t.setLayoutY((38+1) + ((TargetPos.column-1) * GameController.SpaceHeight));
-                String id = "";
-                id += (char)((int)TargetPos.row);
-                id += TargetPos.column;
-                t.setId(id);
-                GameController.GamePane.getChildren().add(t);
-                currMoves.add(t);                                                 
-                    }
-            else if(ChessController.INSTANCE.GetPieceOnPos(TargetPos).isWhite != ChessController.INSTANCE.isWhite)
-            {
-                     ImageView t = new ImageView();
-                t.setImage(ChessController.INSTANCE.__Move_Image__);
-                t.setFitHeight(GameController.SpaceHeight);
-                t.setFitWidth(GameController.SpaceWidth);
-                t.setLayoutX((44+1) + (((int)TargetPos.row - ((int)'a')) * GameController.SpaceWidth));
-                t.setLayoutY((38+1) + ((TargetPos.column-1) * GameController.SpaceHeight));
-                String id = "";
-                id += (char)((int)TargetPos.row);
-                id += TargetPos.column;
-                t.setId(id);
-                GameController.GamePane.getChildren().add(t);
-                currMoves.add(t);                                
-            }            
-         }
-
-
-         
-              for(int i = 0; i < currMoves.size(); i++)
+           c = -2;
+           TargetPos=new ChessPos((char)((int)currPos.row+c),currPos.column+(fieldMod));
+           if(TargetPos.row >= (int)'a' && TargetPos.row <= (int)'h' && TargetPos.column > 0 && TargetPos.column < 9)
+           {                         
+                if((!ChessController.INSTANCE.ContainsKey(TargetPos)))
+                {
+                    //prevent attacking allies
+                    ImageView t = new ImageView();
+                    t.setImage(ChessController.INSTANCE.__Move_Image__);
+                    t.setFitHeight(GameController.SpaceHeight);
+                    t.setFitWidth(GameController.SpaceWidth);
+                    t.setLayoutX((44+1) + (((int)TargetPos.row - ((int)'a')) * GameController.SpaceWidth));
+                    t.setLayoutY((38+1) + ((TargetPos.column-1) * GameController.SpaceHeight));
+                    String id = "";
+                    id += (char)((int)TargetPos.row);
+                    id += TargetPos.column;
+                    t.setId(id);
+                    GameController.GamePane.getChildren().add(t);
+                    currMoves.add(t);                                                 
+                }
+                else if(ChessController.INSTANCE.GetPieceOnPos(TargetPos).isWhite != ChessController.INSTANCE.isWhite)
+                {
+                    ImageView t = new ImageView();
+                    t.setImage(ChessController.INSTANCE.__Move_Image__);
+                    t.setFitHeight(GameController.SpaceHeight);
+                    t.setFitWidth(GameController.SpaceWidth);
+                    t.setLayoutX((44+1) + (((int)TargetPos.row - ((int)'a')) * GameController.SpaceWidth));
+                    t.setLayoutY((38+1) + ((TargetPos.column-1) * GameController.SpaceHeight));
+                    String id = "";
+                    id += (char)((int)TargetPos.row);
+                    id += TargetPos.column;
+                    t.setId(id);
+                    GameController.GamePane.getChildren().add(t);
+                    currMoves.add(t);                                
+                }            
+            }
+            fieldMod = -1;
+            c = -2;
+            TargetPos=new ChessPos((char)((int)currPos.row+c),currPos.column+(fieldMod));
+            if(TargetPos.row >= (int)'a' && TargetPos.row <= (int)'h' && TargetPos.column > 0 && TargetPos.column < 9)
+            {                         
+                if((!ChessController.INSTANCE.ContainsKey(TargetPos)))
+                {
+                    //prevent attacking allies
+                    ImageView t = new ImageView();
+                    t.setImage(ChessController.INSTANCE.__Move_Image__);
+                    t.setFitHeight(GameController.SpaceHeight);
+                    t.setFitWidth(GameController.SpaceWidth);
+                    t.setLayoutX((44+1) + (((int)TargetPos.row - ((int)'a')) * GameController.SpaceWidth));
+                    t.setLayoutY((38+1) + ((TargetPos.column-1) * GameController.SpaceHeight));
+                    String id = "";
+                    id += (char)((int)TargetPos.row);
+                    id += TargetPos.column;
+                    t.setId(id);
+                    GameController.GamePane.getChildren().add(t);
+                    currMoves.add(t);                                                 
+                }
+                else if(ChessController.INSTANCE.GetPieceOnPos(TargetPos).isWhite != ChessController.INSTANCE.isWhite)
+                {
+                    ImageView t = new ImageView();
+                    t.setImage(ChessController.INSTANCE.__Move_Image__);
+                    t.setFitHeight(GameController.SpaceHeight);
+                    t.setFitWidth(GameController.SpaceWidth);
+                    t.setLayoutX((44+1) + (((int)TargetPos.row - ((int)'a')) * GameController.SpaceWidth));
+                    t.setLayoutY((38+1) + ((TargetPos.column-1) * GameController.SpaceHeight));
+                    String id = "";
+                    id += (char)((int)TargetPos.row);
+                    id += TargetPos.column;
+                    t.setId(id);
+                    GameController.GamePane.getChildren().add(t);
+                    currMoves.add(t);                                
+                }            
+            }
+            for(int i = 0; i < currMoves.size(); i++)
             {
                 ImageView v = currMoves.get(i);
                 v.addEventHandler(MouseEvent.MOUSE_CLICKED, eh ->{   

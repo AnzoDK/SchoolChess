@@ -70,6 +70,7 @@ public class ConnectionManager {
             System.out.println("Starting SocketRead Thread");
             SocketReader sr = new SocketReader();
             socketReadThread = new Thread(sr);
+            socketReadThread.setDaemon(true);
             socketReadThread.start();
         }
         catch(IOException e)
@@ -94,6 +95,7 @@ public class ConnectionManager {
             System.out.println("Starting SocketRead Thread");
             SocketReader sr = new SocketReader();
             socketReadThread = new Thread(sr);
+            socketReadThread.setDaemon(true);
             socketReadThread.start();
             
         }

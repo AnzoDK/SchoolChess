@@ -4,6 +4,8 @@
  */
 package dk.anzodk.skakproject;
 
+import java.io.IOException;
+import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.event.EventType;
 
@@ -25,7 +27,20 @@ public class ServerListener extends AnzoHorribleBaseCallback {
     {
         System.out.println("You Won!");
         //GameController.GamePane.fireEvent(new EndGameEvent(EndGameEvent.GAME_WIN));
-        GameController.StringQueue.add("WIN");
+        //GameController.StringQueue.add("WIN");
+        Platform.runLater(() ->{
+            ChessLobbyController.DisplayError("You won!", "You Won The Game Of Chess!",Alert.AlertType.INFORMATION);
+            ConnectionManager.INSTANCE.KillClient();
+            ConnectionManager.INSTANCE.KillConnection();
+            try{
+            App.setRoot("ChessLobby");
+            }
+            catch(IOException e)
+            {
+                System.out.println(e);
+            }
+        });
+        
     }
     
     @Override
@@ -33,7 +48,19 @@ public class ServerListener extends AnzoHorribleBaseCallback {
     {
         System.out.println("You Lost!");
         //GameController.GamePane.fireEvent(new EndGameEvent(EndGameEvent.GAME_LOSS));
-        GameController.StringQueue.add("LOSS");
+        //GameController.StringQueue.add("LOSS");
+        Platform.runLater(() ->{
+            ChessLobbyController.DisplayError("You Lost", "You Lost A Game Of Chess...");
+            ConnectionManager.INSTANCE.KillClient();
+            ConnectionManager.INSTANCE.KillConnection();
+            try{
+            App.setRoot("ChessLobby");
+            }
+            catch(IOException e)
+            {
+                System.out.println(e);
+            }
+        });
     }
     
 }

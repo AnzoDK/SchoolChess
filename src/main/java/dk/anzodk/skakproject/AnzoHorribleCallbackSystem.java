@@ -32,7 +32,7 @@ public class AnzoHorribleCallbackSystem {
         {
             for(int i = 0; i < listeners.size(); i++)
             {
-                if(rawString.contains("White") && ChessController.INSTANCE.isWhite)
+                if((rawString.contains("White") && ChessController.INSTANCE.isWhite) || (rawString.contains("Black") && !ChessController.INSTANCE.isWhite))
                 {
                     listeners.get(i).onDefeat(rawString);
                 }

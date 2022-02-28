@@ -22,6 +22,7 @@ import java.util.Map;
 import javafx.scene.control.Alert;
 
 import javafx.concurrent.Task;
+import javafx.scene.control.ListView;
 
 /**
  * FXML Controller class
@@ -46,6 +47,11 @@ public class GameController implements Initializable {
     
     public GraphicsContext gc;
     
+    @FXML
+    public ListView moveListView;
+    
+    public static ListView __moveListView = null;
+    
     public static AnchorPane GamePane = null;
     
     public static double SpaceWidth;
@@ -60,6 +66,7 @@ public class GameController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
+        __moveListView = moveListView;
         gc = board.getGraphicsContext2D();
         double spaceW = (board.getWidth()-1)/8;
         double spaceH = (board.getHeight()-1)/8;

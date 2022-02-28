@@ -138,6 +138,20 @@ public class ChessController {
             }
         }*/
         
-        moveList.add(pieceName + "(" + (isWhite ? "White" : "Black") + ")[" + from.AsString() + "] to [" + to.AsString() +"]");
+        moveList.add(pieceName + "(" + (!ChessController.INSTANCE.isWhite ? "White" : "Black") + ") [" + from.AsString() + "] to [" + to.AsString() +"]");
+        UpdateMoveList();
+    }
+    
+    public void UpdateMoveList()
+    {
+        if(GameController.__moveListView != null)
+        {
+            Platform.runLater( () ->{ 
+            
+                GameController.__moveListView.getItems().clear();
+                GameController.__moveListView.getItems().addAll(moveList);
+            
+            });
+        }
     }
 }

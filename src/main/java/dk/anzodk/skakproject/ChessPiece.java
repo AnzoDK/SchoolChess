@@ -75,6 +75,8 @@ public class ChessPiece {
         if(!local)
         {
             ConnectionManager.INSTANCE.Send("MOVE " + currPos.AsString() + " TO " + newPos.AsString() + " TYPE " + name);
+            ChessController.INSTANCE.moveList.add(name + "(" + (isWhite ? "White" : "Black") + ") [" + currPos.AsString() + "] to [" + newPos.AsString() +"]");
+            ChessController.INSTANCE.UpdateMoveList();
         }
         if(ChessController.INSTANCE.GetPieceOnPos(newPos) != null)
         {

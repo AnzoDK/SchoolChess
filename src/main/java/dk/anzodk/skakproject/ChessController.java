@@ -5,6 +5,7 @@
 package dk.anzodk.skakproject;
 import java.util.ArrayList;
 import java.util.HashMap;
+import javafx.application.Platform;
 import javafx.scene.image.Image;
 /**
  *
@@ -80,7 +81,7 @@ public class ChessController {
     public void RemovePieceFromPlay(ChessPiece p)
     {
         //GameController.GamePane.getChildren().remove(p.pieceImageView); //Wrong thread.....
-        p.pieceImageView.setLayoutX(999999999); // just move the piece out the fucking way, cuz threading issue
+        p.pieceImageView.setLayoutX(999999999); // just move the piece out the fucking way, cuz threading issue /*This problem is now fixed :)*/
         p.isAlive = false;
         if(p.isWhite)
         {
@@ -90,6 +91,7 @@ public class ChessController {
         {
             BlackPieces.remove(p);
         }
+        Platform.runLater(() -> {GameController.GamePane.getChildren().remove(p.pieceImageView);});
     }
     
     boolean ValidateMove(String pieceName, ChessPos from, ChessPos to)

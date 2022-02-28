@@ -68,17 +68,6 @@ public class GameController implements Initializable {
         GameController.SpaceHeight = spaceH;
         GameController.GamePane = mainPane;
         
-        GamePane.addEventHandler(EndGameEvent.GAME_WIN, event -> {
-            
-            ChessLobbyController.DisplayError("You WON!", "You WON!", Alert.AlertType.NONE);
-            
-        });
-        GamePane.addEventHandler(EndGameEvent.GAME_LOSS, event -> {
-            
-            ChessLobbyController.DisplayError("You LOST!", "You LOST!", Alert.AlertType.NONE);
-            
-        });
-        
         SetUpChess();
         DrawBoard(spaceW, spaceH);
         DrawPieces();

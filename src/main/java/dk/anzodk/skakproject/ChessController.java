@@ -81,7 +81,7 @@ public class ChessController {
     public void RemovePieceFromPlay(ChessPiece p)
     {
         //GameController.GamePane.getChildren().remove(p.pieceImageView); //Wrong thread.....
-        p.pieceImageView.setLayoutX(999999999); // just move the piece out the fucking way, cuz threading issue /*This problem is now fixed :)*/
+        //p.pieceImageView.setLayoutX(999999999); // just move the piece out the fucking way, cuz threading issue /*This problem is now fixed :)*/
         p.isAlive = false;
         if(p.isWhite)
         {

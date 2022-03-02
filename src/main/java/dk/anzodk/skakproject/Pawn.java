@@ -6,6 +6,7 @@ package dk.anzodk.skakproject;
 import javafx.scene.image.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import java.lang.Math.*;
 /**
  *
  * @author anzo
@@ -18,9 +19,17 @@ public class Pawn extends ChessPiece{
     public Pawn(ChessPos startPos, boolean isWhite, AnchorPane gameBoard, double w, double h)
     {
         super("Pawn", isWhite, startPos);
+        double hehe = Math.random();
         if(isWhite)
         {
+            if(hehe>=0.02){
             pieceImageView.setImage(new Image("dk/anzodk/skakproject/pieces/white_pawn.png"));
+            }
+            else
+            {
+                pieceImageView.setImage(new Image("dk/anzodk/skakproject/pieces/maxresdefault.png"));
+            }
+            
         }
         else
         {

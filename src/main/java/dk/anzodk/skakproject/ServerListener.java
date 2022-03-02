@@ -22,7 +22,7 @@ public class ServerListener extends AnzoHorribleBaseCallback {
         //ConnectionManager.INSTANCE.socketReadThread.stop();
         //ChessLobbyController.DisplayError("Client has left the Game", "The Other Player Left the game!", Alert.AlertType.WARNING); //Wrong thread
         Platform.runLater(() ->{
-            ChessLobbyController.DisplayError("Connection Error", "Connection to the server was lost...");
+            ChessLobbyController.DisplayError("Connection Error", "Connection to the server was lost...(or opponent ragequit?)");
             ConnectionManager.INSTANCE.KillClient();
             ConnectionManager.INSTANCE.KillConnection();
             try{

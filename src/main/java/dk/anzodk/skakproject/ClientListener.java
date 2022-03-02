@@ -20,6 +20,18 @@ public class ClientListener extends AnzoHorribleBaseCallback{
         //ConnectionManager.INSTANCE.socketReadThread.stop();
         //ChessLobbyController.DisplayError("Server has left the Game", "The Other Player Left the game!", Alert.AlertType.WARNING); //Wrong thread
         System.out.println("Sever has left the Game");
+        Platform.runLater(() ->{
+            ChessLobbyController.DisplayError("Connection Error", "Connection to the server was lost...");
+            ConnectionManager.INSTANCE.KillClient();
+            ConnectionManager.INSTANCE.KillConnection();
+            try{
+            App.setRoot("ChessLobby");
+            }
+            catch(IOException e)
+            {
+                System.out.println(e);
+            }
+        });
         ConnectionManager.INSTANCE.KillConnection();
     }
     @Override void onVictory(String msg)
